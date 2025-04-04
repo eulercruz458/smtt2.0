@@ -190,8 +190,10 @@ gerarPdf.addEventListener('click', async () => {
     const telefone2 = document.getElementById('telefone2').value;
     const dataAgendamento = document.getElementById('dataAgendamento').value;
     const sexo = document.querySelector('input[name="sexo"]:checked').value;
-  const deficiencia = document.querySelector('input[name="deficiencia"]:checked').value;
+    const deficiencia = document.querySelector('input[name="deficiencia"]:checked').value;
     const horario = document.getElementById('horario').value;
+    // PEGA O ATENDENTE LOGADO AQUI
+    const nomeAtendente = localStorage.getItem('atendenteLogado') || '';
     
     const { cpfResponsavel, nomeOutroResponsavel} = verificarIdade(nomeMae);
   
@@ -242,6 +244,7 @@ gerarPdf.addEventListener('click', async () => {
     doc.text(`${bairro}`, 50, 102);
     doc.text(`${telefone1Formatado}`, 51, 112);
     doc.text(`${telefone2Formatado}`, 155, 112);
+    doc.text(`${atendenteLogado}`,163,20.5);
   
       if (sexo === 'masculino') {
         doc.text('X', 162, 60); // Posição para masculino
@@ -288,7 +291,7 @@ gerarPdf.addEventListener('click', async () => {
 
         const textoResponsavel = `Eu, ${nomeOutroResponsavel}, inscrito(a) no CPF sob o nº ${cpfResponsavel}, responsável pelo(a) menor ${nome}, inscrito(a) no CPF sob o nº ${cpf}, faço a opção pela utilização da catraca, visando à maior disponibilidade de assentos no transporte coletivo, utilizando-se, neste caso, a biometria facial do beneficário previamente cadastrado no sistema.\n\nAo encostar o cartão no validador ,o titular deve passar primeiro na catraca e depois o acompanhante ,obrigatório que o beneficiário conste na foto capturada no ato do uso do cartão, para que o seu benefício não venha ser suspenso.`
         
-            const textoAssinatura = `Aracaju/SE, ${dataHojeFormatadaExtenso}.\n\n________________________________________________\nAssinatura do(a) Responsavel`;
+        const textoAssinatura = `Aracaju/SE, ${dataHojeFormatadaExtenso}.\n\n________________________________________________\nAssinatura do(a) Responsavel`;
 
         
         // Exibe as informações do responsável
