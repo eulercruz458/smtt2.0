@@ -12,9 +12,9 @@ form.addEventListener('submit', function(e) {
 
   if (atendentesValidos.includes(atendente) && senha === senhaValida) {
     mensagemErro.textContent = '';
-    localStorage.setItem('atendenteLogado', atendente); // salva nome para uso posterior
+    localStorage.setItem('atendenteLogado', atendente); // para uso futuro
     alert('Login realizado com sucesso!');
-    window.location.href = 'https://formularioagendamento.netlify.app/'; // redireciona
+    window.location.href = `https://formularioagendamento.netlify.app/?atendente=${encodeURIComponent(atendente)}`;
   } else {
     mensagemErro.textContent = 'Atendente ou senha inválidos!';
   }
