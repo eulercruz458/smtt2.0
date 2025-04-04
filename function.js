@@ -206,10 +206,6 @@ gerarPdf.addEventListener('click', async () => {
     const dataAgendamentoFormatada = formatarData(dataAgendamento);
     const dataNascimentoFormatada = formatarData(dataNascimento);
   
-    // Captura o nome do atendente da URL
-    const params = new URLSearchParams(window.location.search);
-    const atendente = params.get('atendente') || ''; // se não tiver, usa vazio
-
     // Cria um novo documento PDF
     const doc = new jsPDF();
   
@@ -242,10 +238,8 @@ gerarPdf.addEventListener('click', async () => {
     doc.text(`${bairro}`, 50, 102);
     doc.text(`${telefone1Formatado}`, 51, 112);
     doc.text(`${telefone2Formatado}`, 155, 112);
-    doc.text(`${nomeAtendente}`, 163, 20);
-    // Adiciona o atendente no canto superior direito
     doc.setFontSize(10);
-    doc.text(`${atendente}`, 163, 20.5);
+    doc.text(`${nomeAtendente}`, 163, 20.5);
   
   
       if (sexo === 'masculino') {
@@ -480,8 +474,6 @@ trocarCinzaRoxo.addEventListener('click', async () => {
     let autorizacao2 = false;
 
     // Captura o nome do atendente da URL
-    const params = new URLSearchParams(window.location.search);
-    const atendente = params.get('atendente') || '';
     const nome = document.getElementById('nome').value;
     const rg = document.getElementById('rg').value;
     const ssp = document.getElementById('ssp').value;
