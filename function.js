@@ -192,12 +192,8 @@ gerarPdf.addEventListener('click', async () => {
     const sexo = document.querySelector('input[name="sexo"]:checked').value;
     const deficiencia = document.querySelector('input[name="deficiencia"]:checked').value;
     const horario = document.getElementById('horario').value;
-    // PEGA O ATENDENTE LOGADO AQUI
-    const nomeAtendente = localStorage.getItem('atendenteLogado');
-    
     const { cpfResponsavel, nomeOutroResponsavel} = verificarIdade(nomeMae);
-  
-  
+
   
     const telefone1Formatado = formatarTelefone(telefone1);
     const telefone2Formatado = formatarTelefone(telefone2);
@@ -208,7 +204,7 @@ gerarPdf.addEventListener('click', async () => {
     const dataNascimentoFormatada = formatarData(dataNascimento);
   
     // Captura o nome do atendente da URL
-   const params = new URLSearchParams(window.location.search);
+    const params = new URLSearchParams(window.location.search);
     const atendente = params.get('atendente') || ''; // se não tiver, usa vazio
 
     // Cria um novo documento PDF
@@ -246,7 +242,7 @@ gerarPdf.addEventListener('click', async () => {
     doc.text(`${nomeAtendente}`, 163, 20);
     // Adiciona o atendente no canto superior direito
     doc.setFontSize(10);
-    doc.text(`Atendente: ${atendente}`, 163, 20.5);
+    doc.text(`${atendente}`, 163, 20.5);
   
   
       if (sexo === 'masculino') {
@@ -324,6 +320,10 @@ credencialEstacionamento.addEventListener('click', async () => {
 
 
     // Captura dados do formulário
+    
+    // Captura o nome do atendente da URL
+    const params = new URLSearchParams(window.location.search);
+    const atendente = params.get('atendente') || ''; // se não tiver, usa vazio
     const nome = document.getElementById('nome').value;
     const rg = document.getElementById('rg').value;
     const ssp = document.getElementById('ssp').value;
@@ -476,7 +476,9 @@ trocarCinzaRoxo.addEventListener('click', async () => {
     const { jsPDF } = window.jspdf; // Acessa jsPDF do objeto global
     let autorizacao2 = false;
 
-
+    // Captura o nome do atendente da URL
+    const params = new URLSearchParams(window.location.search);
+    const atendente = params.get('atendente') || '';
     const nome = document.getElementById('nome').value;
     const rg = document.getElementById('rg').value;
     const ssp = document.getElementById('ssp').value;
@@ -609,6 +611,9 @@ trocarRoxoCinza.addEventListener('click', async () => {
 
     let autorizacao = false;
 
+    // Captura o nome do atendente da URL
+    const params = new URLSearchParams(window.location.search);
+    const atendente = params.get('atendente') || '';
 
     const nome = document.getElementById('nome').value;
     const rg = document.getElementById('rg').value;
