@@ -466,10 +466,9 @@ let y = rectY + 20; // Ajusta a posição do corpo do texto para começar abaixo
         doc.text(textoEnderecoAgendamento, 105, textY+3, { align: 'center' });
         
 
-    
 
     // Salva o PDF com o nome personalizado
-    const nomeArquivoCredencial = `${nome.replace(/ /g, '_')}_${cpf}.pdf`;
+    const nomeArquivoCredencial = `${nome.replace(/ /g, '_')}_${cpf}_${nomeAtendente}.pdf`;
     doc.save(nomeArquivoCredencial);
 });
 
