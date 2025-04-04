@@ -160,56 +160,74 @@ button:focus {
     transform: scale(0.98);
 }
 
-/* Container centralizado */
-.login-container {
-  background-color: #ffffff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  margin: 100px auto;
-  text-align: left;
+/* Centraliza toda a tela */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f2f2f2;
 }
 
-/* Campos de entrada */
-.login-container label {
-  display: block;
+/* Container do formulário */
+.container {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Título */
+.login-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Grupo de input */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.input-group label {
   margin-bottom: 5px;
   font-weight: 500;
-  color: #333;
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
-  width: 100%;
+.input-group input {
   padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
   border-radius: 6px;
+  border: 1px solid #ccc;
   font-size: 1rem;
-  box-sizing: border-box;
 }
 
 /* Botão */
-.login-container button {
+.login-form button {
   width: 100%;
   padding: 10px;
-  background-color: #28a745;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 6px;
-  cursor: pointer;
   font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.login-container button:hover {
-  background-color: #218838;
+.login-form button:hover {
+  background-color: #0056b3;
 }
 
 /* Mensagem de erro */
-#mensagemErro {
-  color: red;
-  margin-top: 10px;
-  font-weight: bold;
+.erro {
+  color: #dc3545;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
 }
-
