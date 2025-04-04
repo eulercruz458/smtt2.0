@@ -1,6 +1,4 @@
-// Captura o nome do atendente da URL
-const params = new URLSearchParams(window.location.search);
-const nomeAtendente = params.get('atendente') || '';
+const nomeAtendente = new URLSearchParams(window.location.search).get('atendente') || '';
 
 const gerarPdf = document.getElementById('gerarPdf');
 const trocarCinzaRoxo = document.getElementById('trocarCinzaRoxo');
