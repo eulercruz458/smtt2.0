@@ -1,3 +1,7 @@
+// Captura o nome do atendente da URL
+const params = new URLSearchParams(window.location.search);
+const nomeAtendente = params.get('atendente') || '';
+
 const gerarPdf = document.getElementById('gerarPdf');
 const trocarCinzaRoxo = document.getElementById('trocarCinzaRoxo');
 
@@ -31,9 +35,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
-const params = new URLSearchParams(window.location.search);
-const nomeAtendente = params.get('atendente') || '';
 
 // Função para obter a data atual no formato YYYY-MM-DD
 function obterDataAtual() {
@@ -196,6 +197,9 @@ gerarPdf.addEventListener('click', async () => {
     const deficiencia = document.querySelector('input[name="deficiencia"]:checked').value;
     const horario = document.getElementById('horario').value;
     const { cpfResponsavel, nomeOutroResponsavel} = verificarIdade(nomeMae);
+    doc.setFontSize(10);
+    doc.text(`${nomeAtendente}`, 163, 20.5);
+
 
   
     const telefone1Formatado = formatarTelefone(telefone1);
