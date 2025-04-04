@@ -193,7 +193,7 @@ gerarPdf.addEventListener('click', async () => {
     const deficiencia = document.querySelector('input[name="deficiencia"]:checked').value;
     const horario = document.getElementById('horario').value;
     // PEGA O ATENDENTE LOGADO AQUI
-    const nomeAtendente = localStorage.getItem('atendenteLogado') || '';
+    const nomeAtendente = localStorage.getItem('atendenteLogado');
     
     const { cpfResponsavel, nomeOutroResponsavel} = verificarIdade(nomeMae);
   
@@ -221,8 +221,8 @@ gerarPdf.addEventListener('click', async () => {
     // Adiciona a imagem do formulário
     doc.addImage(imgData, 'PNG', 0, 0, 210, 297); 
     
-    const nomeAtendente = localStorage.getItem('atendenteLogado') || '';
-    doc.text(`${nomeAtendente}`, 163, 20.5);
+
+   
 
     // Adiciona um espaço
     doc.text(' ', 10, 30);
@@ -244,7 +244,7 @@ gerarPdf.addEventListener('click', async () => {
     doc.text(`${bairro}`, 50, 102);
     doc.text(`${telefone1Formatado}`, 51, 112);
     doc.text(`${telefone2Formatado}`, 155, 112);
-    doc.text(`${atendenteLogado}`,163,20.5);
+    doc.text(`${nomeAtendente}`, 163, 20);
   
       if (sexo === 'masculino') {
         doc.text('X', 162, 60); // Posição para masculino
