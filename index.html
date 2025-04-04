@@ -7,15 +7,14 @@
   <link rel="stylesheet" href="style.css">
 
   <script>
-    // Checar se há nome do atendente na URL
-    const url = new URL(window.location.href);
-    const atendente = url.searchParams.get("atendente");
+  const url = new URL(window.location.href);
+  const atendente = url.searchParams.get("atendente");
 
-    if (!atendente) {
-      // Se não tiver atendente, redireciona para a página de login
-      window.location.href = "/login.html";
-    }
-  </script>
+  if (!atendente) {
+    window.location.href = "login.html";
+  }
+</script>
+
 </head>
 <body>
   <h1>Formulário de Agendamento</h1>
