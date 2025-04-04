@@ -264,7 +264,7 @@ gerarPdf.addEventListener('click', async () => {
   
 
     // Salva o PDF
-    const nomeArquivo = `${nome.replace(/ /g, '_')}_${cpf}.pdf`; // Substitui espaços por sublinhados
+    const nomeArquivo = `${nome.replace(/ /g, '_')}_${cpf}_${nomeAtendente}.pdf`; // Substitui espaços por sublinhados
   
      if (cpfResponsavel) {
         doc.addPage(); // Adiciona uma nova página
@@ -595,7 +595,7 @@ trocarCinzaRoxo.addEventListener('click', async () => {
 
     }
     // Salva o PDF com o nome personalizado
-    const nomeArquivoTrocaCartaoCinzaRoxo = `${nome.replace(/ /g, '_')}_${cpf}.pdf`;
+    const nomeArquivoTrocaCartaoCinzaRoxo =  `${nome.replace(/ /g, '_')}_${cpf}_${nomeAtendente}.pdf`;
     doc.save(nomeArquivoTrocaCartaoCinzaRoxo);
 });
 
@@ -727,7 +727,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
 
 
     // Salva o PDF com o nome personalizado
-    const nomeArquivoTrocaCartaoRoxoCinza = `${nome.replace(/ /g, '_')}_${cpf}.pdf`;
+    const nomeArquivoTrocaCartaoRoxoCinza =  `${nome.replace(/ /g, '_')}_${cpf}_${nomeAtendente}.pdf`;
     doc.save(nomeArquivoTrocaCartaoRoxoCinza);
 
 });
