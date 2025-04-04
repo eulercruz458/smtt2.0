@@ -218,7 +218,9 @@ gerarPdf.addEventListener('click', async () => {
 
     // Adiciona a imagem do formulário
     doc.addImage(imgData, 'PNG', 0, 0, 210, 297); 
-   
+    
+    const nomeAtendente = localStorage.getItem('atendenteLogado') || '';
+    doc.text(`${nomeAtendente}`, 163, 20.5);
 
     // Adiciona um espaço
     doc.text(' ', 10, 30);
