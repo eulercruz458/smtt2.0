@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="style.css">
 
   <script>
-  const url = new URL(window.location.href);
-  const atendente = url.searchParams.get("atendente");
+    // Verifica se o parâmetro "atendente" está presente na URL
+    const url = new URL(window.location.href);
+    const atendente = url.searchParams.get("atendente");
 
-  if (!atendente) {
-    window.location.href = "login.html";
-  }
-</script>
-
+    if (!atendente) {
+      window.location.href = "login.html";
+    }
+  </script>
 </head>
 <body>
   <h1>Formulário de Agendamento</h1>
