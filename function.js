@@ -32,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+const params = new URLSearchParams(window.location.search);
+const nomeAtendente = params.get('atendente') || '';
+
 // Função para obter a data atual no formato YYYY-MM-DD
 function obterDataAtual() {
     const hoje = new Date();
