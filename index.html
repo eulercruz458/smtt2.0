@@ -13,13 +13,35 @@
 
     if (!atendente) {
       window.location.href = "login.html";
+    } else {
+      window.nomeAtendente = atendente;
+      document.addEventListener("DOMContentLoaded", () => {
+        const campo = document.getElementById("atendenteManual");
+        const campoFixo = document.getElementById("campoAtendenteFixoTexto");
+
+        if (campo) campo.value = atendente;
+        if (campoFixo) campoFixo.textContent = atendente;
+      });
     }
   </script>
 </head>
 <body>
+
+  <!-- Campo do Atendente fixo no canto superior esquerdo -->
+  <div id="campoAtendenteFixo">
+    <label>Atendente:</label>
+    <span id="campoAtendenteFixoTexto"></span>
+  </div>
+
   <h1>Formulário de Agendamento</h1>
 
   <form id="agendamentoForm">
+    <!-- Campo do atendente dentro do formulário -->
+    <div class="input-container">
+      <label for="atendenteManual">Nome do Atendente:</label>
+      <input type="text" id="atendenteManual" name="atendenteManual" readonly>
+    </div>
+
     <div class="input-container">
       <label for="dataHoje">Data de hoje:</label>
       <input type="date" id="dataHoje" required>
