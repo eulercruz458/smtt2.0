@@ -1,171 +1,212 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gerador de PDF</title>
   <link rel="stylesheet" href="style.css">
 
-  <script>
-    // Verifica se o parâmetro "atendente" está presente na URL
-    const url = new URL(window.location.href);
-    const atendente = url.searchParams.get("atendente");
-
-    if (!atendente) {
-      window.location.href = "login.html";
-    } else {
-      window.nomeAtendente = atendente;
-      document.addEventListener("DOMContentLoaded", () => {
-        const campo = document.getElementById("atendenteManual");
-        const campoFixo = document.getElementById("campoAtendenteFixoTexto");
-
-        if (campo) campo.value = atendente;
-        if (campoFixo) campoFixo.textContent = atendente;
-      });
+  <style>
+    #campoAtendente {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: white;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-weight: bold;
     }
-  </script>
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-form {
+      background: #f1f1f1;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    .input-group {
+      margin-bottom: 10px;
+    }
+
+    .erro {
+      color: red;
+      margin-top: 10px;
+    }
+
+    #formularioSection {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Campo do Atendente fixo no canto superior esquerdo -->
-  <div id="campoAtendenteFixo">
-    <label>Atendente:</label>
-    <span id="campoAtendenteFixoTexto"></span>
-  </div>
-
-  <h1>Formulário de Agendamento</h1>
-
-  <form id="agendamentoForm">
-    <!-- Campo do atendente dentro do formulário -->
-    <div class="input-container">
-      <label for="atendenteManual">Nome do Atendente:</label>
-      <input type="text" id="atendenteManual" name="atendenteManual" readonly>
-    </div>
-
-    <div class="input-container">
-      <label for="dataHoje">Data de hoje:</label>
-      <input type="date" id="dataHoje" required>
-    </div>
-
-    <div class="input-container">
-      <label for="nome">Nome Completo:</label>
-      <input type="text" id="nome" required>
-    </div>
-
-    <div class="input-container">
-      <label for="dataNascimento">Data de nascimento:</label>
-      <input type="date" id="dataNascimento" required>
-    </div>
-
-    <div class="input-container">
-      <label for="rg">RG:</label>
-      <input type="text" id="rg" required>
-    </div>
-
-    <div class="input-container">
-      <label for="ssp">SSP:</label>
-      <input type="text" id="ssp" required>
-    </div>
-
-    <div class="input-container">
-      <label for="cpf">CPF:</label>
-      <input type="text" id="cpf" required>
-    </div>
-
-    <div class="input-container">
-      <label for="nomeMae">Nome da Mãe:</label>
-      <input type="text" id="nomeMae" required>
-    </div>
-
-    <div class="input-container">
-      <label for="endereco">Endereço:</label>
-      <input type="text" id="endereco" required>
-    </div>
-
-    <div class="input-container">
-      <label for="numCasa">N°:</label>
-      <input type="text" id="numCasa" required>
-    </div>
-
-    <div class="input-container">
-      <label for="bairro">Bairro:</label>
-      <input type="text" id="bairro" required>
-    </div>
-
-    <div class="input-container">
-      <label for="cidade">Cidade:</label>
-      <input type="text" id="cidade" required>
-    </div>
-
-    <div class="input-container">
-      <label for="telefone1">Telefone (1):</label>
-      <input type="text" id="telefone1" required>
-    </div>
-
-    <div class="input-container">
-      <label for="telefone2">Telefone (2):</label>
-      <input type="text" id="telefone2" required>
-    </div>
-
-    <div class="input-container">
-      <label>Sexo:</label>
-      <div>
-        <label for="sexoMasculino">
-          <input type="radio" id="sexoMasculino" name="sexo" value="masculino" required>
-          Masculino
-        </label>
-        <label for="sexoFeminino">
-          <input type="radio" id="sexoFeminino" name="sexo" value="feminino">
-          Feminino
-        </label>
+  <!-- Login -->
+  <section id="loginSection" class="container">
+    <form class="login-form" id="loginForm">
+      <h2>Entrar</h2>
+      <div class="input-group">
+        <label for="atendenteLogin">Atendente</label>
+        <input type="text" id="atendenteLogin" required />
       </div>
-    </div>
-
-    <div class="input-container">
-      <label for="dataAgendamento">Data do Agendamento:</label>
-      <input type="date" id="dataAgendamento" required>
-    </div>
-
-    <div class="input-container">
-      <label for="horario">Horário:</label>
-      <input type="text" id="horario" required>
-    </div>
-
-    <div class="input-container">
-      <label>Tipo de Deficiência:</label>
-      <div>
-        <label for="TEA">
-          <input type="radio" id="TEA" name="deficiencia" value="TEA" required> TEA
-        </label>
-        <label for="mental">
-          <input type="radio" id="mental" name="deficiencia" value="mental"> Mental
-        </label>
-        <label for="auditivo">
-          <input type="radio" id="auditivo" name="deficiencia" value="auditivo"> Auditivo
-        </label>
-        <label for="visual">
-          <input type="radio" id="visual" name="deficiencia" value="visual"> Visual
-        </label>
-        <label for="fisico">
-          <input type="radio" id="fisico" name="deficiencia" value="fisico"> Físico
-        </label>
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" required />
       </div>
+      <button type="submit">Login</button>
+      <p id="mensagemErro" class="erro"></p>
+    </form>
+  </section>
+
+  <!-- Formulário principal -->
+  <section id="formularioSection">
+    <div id="campoAtendente">Atendente: <span id="nomeAtendenteSpan"></span></div>
+
+    <h1>Formulário de Agendamento</h1>
+
+    <form id="agendamentoForm">
+      <div class="input-container">
+        <label for="dataHoje">Data de hoje:</label>
+        <input type="date" id="dataHoje" required />
+      </div>
+
+      <div class="input-container">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" required />
+      </div>
+
+      <div class="input-container">
+        <label for="dataNascimento">Data de nascimento:</label>
+        <input type="date" id="dataNascimento" required />
+      </div>
+
+      <div class="input-container">
+        <label for="rg">RG:</label>
+        <input type="text" id="rg" required />
+      </div>
+
+      <div class="input-container">
+        <label for="ssp">SSP:</label>
+        <input type="text" id="ssp" required />
+      </div>
+
+      <div class="input-container">
+        <label for="atendenteManual">Nome do Atendente:</label>
+        <input type="text" id="atendenteManual" name="atendenteManual" readonly />
+      </div>
+
+      <div class="input-container">
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" required />
+      </div>
+
+      <div class="input-container">
+        <label for="nomeMae">Nome da Mãe:</label>
+        <input type="text" id="nomeMae" required />
+      </div>
+
+      <div class="input-container">
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" required />
+      </div>
+
+      <div class="input-container">
+        <label for="numCasa">N°:</label>
+        <input type="text" id="numCasa" required />
+      </div>
+
+      <div class="input-container">
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" required />
+      </div>
+
+      <div class="input-container">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" required />
+      </div>
+
+      <div class="input-container">
+        <label for="telefone1">Telefone (1):</label>
+        <input type="text" id="telefone1" required />
+      </div>
+
+      <div class="input-container">
+        <label for="telefone2">Telefone (2):</label>
+        <input type="text" id="telefone2" required />
+      </div>
+
+      <div class="input-container">
+        <label>Sexo:</label>
+        <div>
+          <label><input type="radio" name="sexo" value="masculino" required /> Masculino</label>
+          <label><input type="radio" name="sexo" value="feminino" /> Feminino</label>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label for="dataAgendamento">Data do Agendamento:</label>
+        <input type="date" id="dataAgendamento" required />
+      </div>
+
+      <div class="input-container">
+        <label for="horario">Horário:</label>
+        <input type="text" id="horario" required />
+      </div>
+
+      <div class="input-container">
+        <label>Tipo de Deficiência:</label>
+        <div>
+          <label><input type="radio" name="deficiencia" value="TEA" required /> TEA</label>
+          <label><input type="radio" name="deficiencia" value="mental" /> Mental</label>
+          <label><input type="radio" name="deficiencia" value="auditivo" /> Auditivo</label>
+          <label><input type="radio" name="deficiencia" value="visual" /> Visual</label>
+          <label><input type="radio" name="deficiencia" value="fisico" /> Físico</label>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <button type="button" id="gerarPdf">PASSE LIVRE</button>
+        <button type="button" id="credencialEstacionamento" class="botaoEstacionamento">CREDENCIAL DE ESTACIONAMENTO</button>
+        <button type="button" id="limparCampos">APAGAR TUDO</button>
+      </div>
+    </form>
+
+    <div class="div-branca">
+      <button type="button" id="trocarCinzaRoxo">TROCAR PARA O ROXO (CINZA → ROXO)</button>
+      <button type="button" id="trocarRoxoCinza">TROCAR PARA O CINZA (ROXO → CINZA)</button>
     </div>
+  </section>
 
-    <div class="input-container">
-      <button type="button" id="gerarPdf">PASSE LIVRE</button>
-      <button type="button" id="credencialEstacionamento" class="botaoEstacionamento">CREDENCIAL DE ESTACIONAMENTO</button>
-      <button type="button" id="limparCampos">APAGAR TUDO</button>
-    </div>
-  </form>
-
-  <div class="div-branca">
-    <button type="button" id="trocarCinzaRoxo">TROCAR PARA O ROXO (CINZA → ROXO)</button>
-    <button type="button" id="trocarRoxoCinza">TROCAR PARA O CINZA (ROXO → CINZA)</button>
-  </div>
-
+  <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7/inputmask.min.js"></script>
   <script src="function.js"></script>
+
+  <!-- Script de login integrado -->
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const atendente = document.getElementById("atendenteLogin").value.trim();
+      const senha = document.getElementById("senha").value;
+
+      // Validação simples
+      if (atendente && senha === "1234") {
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("formularioSection").style.display = "block";
+        document.getElementById("nomeAtendenteSpan").textContent = atendente;
+        document.getElementById("atendenteManual").value = atendente;
+      } else {
+        document.getElementById("mensagemErro").textContent = "Login inválido. Tente novamente.";
+      }
+    });
+  </script>
 </body>
 </html>
