@@ -237,7 +237,7 @@ gerarPdf.addEventListener('click', async () => {
     const sexo = document.querySelector('input[name="sexo"]:checked').value;
     const deficiencia = document.querySelector('input[name="deficiencia"]:checked').value;
     const horario = document.getElementById('horario').value;
-    const atendente = document.getElementById("atendenteManual").value;
+    const atendente = document.getElementById("nomeAtendenteSpan").textContent;
 
     
     const { cpfResponsavel, nomeOutroResponsavel} = verificarIdade(nomeMae);
@@ -380,6 +380,8 @@ credencialEstacionamento.addEventListener('click', async () => {
     const telefone1 = document.getElementById('telefone1').value;
     const dataAgendamento = document.getElementById('dataAgendamento').value;
     const horario = document.getElementById('horario').value;
+    const atendente = document.getElementById("nomeAtendenteSpan").textContent;
+
 
     // Formata as datas e o telefone
     const dataAgendamentoFormatada = formatarData(dataAgendamento);
@@ -532,6 +534,8 @@ trocarCinzaRoxo.addEventListener('click', async () => {
     const dataHojeFormatada = formatarDataHoje(dataHoje);
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value
+    const atendente = document.getElementById("nomeAtendenteSpan").textContent;
+
 
     
     const numeroCartao = prompt("Informe o número do cartão:");
@@ -638,9 +642,8 @@ trocarCinzaRoxo.addEventListener('click', async () => {
 
 
     }
-    // Salva o PDF com o nome personalizado
-    const atendenteDaURL = new URLSearchParams(window.location.search).get('atendente') || 'atendente';
-    const nomeArquivoTrocaCartaoCinzaRoxo =  `${nome.replace(/ /g, '_')}_${cpf}_${atendenteDaURL}.pdf`;
+    // Salva o PDF com o nome personalizado 
+    const nomeArquivoTrocaCartaoCinzaRoxo =  `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
     doc.save(nomeArquivoTrocaCartaoCinzaRoxo);
 });
 
@@ -669,6 +672,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
     const dataHojeFormatada = formatarDataHoje(dataHoje);
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value;
+    const atendente = document.getElementById("nomeAtendenteSpan").textContent;
     
 
     const numeroCartao = prompt("Informe o número do cartão:");
@@ -772,8 +776,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
 
 
     // Salva o PDF com o nome personalizado
-    const atendenteDaURL = new URLSearchParams(window.location.search).get('atendente') || 'atendente';
-    const nomeArquivoTrocaCartaoRoxoCinza = `${nome.replace(/ /g, '_')}_${cpf}_${atendenteDaURL}.pdf`;    
+    const nomeArquivoTrocaCartaoRoxoCinza = `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;    
     doc.save(nomeArquivoTrocaCartaoRoxoCinza);
 
 });
