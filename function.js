@@ -314,7 +314,7 @@ gerarPdf.addEventListener('click', async () => {
 
 
  // Salva o PDF
- const nomeArquivo = `${nome.replace(/ /g, '_')}_${cpf}_${window.Atendente}.pdf`; // Substitui espaços por sublinhados
+ const nomeArquivo = `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`; // Substitui espaços por sublinhados
 
   if (cpfResponsavel) {
      doc.addPage(); // Adiciona uma nova página
@@ -339,7 +339,7 @@ gerarPdf.addEventListener('click', async () => {
 
      const textoResponsavel = `Eu, ${nomeOutroResponsavel}, inscrito(a) no CPF sob o nº ${cpfResponsavel}, responsável pelo(a) menor ${nome}, inscrito(a) no CPF sob o nº ${cpf}, faço a opção pela utilização da catraca, visando à maior disponibilidade de assentos no transporte coletivo, utilizando-se, neste caso, a impressão digital do acompanhante previamente cadastrado no sistema.`
      
-         const textoAssinatura = `Aracaju/SE, ${dataHojeFormatadaExtenso}.\n\n________________________________________________\nAssinatura do(a) Responsavel`;
+     const textoAssinatura = `Aracaju/SE, ${dataHojeFormatadaExtenso}.\n\n________________________________________________\nAssinatura do(a) Responsavel`;
 
      
      // Exibe as informações do responsável
@@ -516,8 +516,7 @@ let y = rectY + 20; // Ajusta a posição do corpo do texto para começar abaixo
 
 
     // Salva o PDF com o nome personalizado
-    const atendenteDaURL = new URLSearchParams(window.location.search).get('atendente') || 'atendente';
-    const nomeArquivoCredencial = `${nome.replace(/ /g, '_')}_${cpf}_${atendenteDaURL}.pdf`;
+    const nomeArquivoCredencial = `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
     doc.save(nomeArquivoCredencial);
 });
 
