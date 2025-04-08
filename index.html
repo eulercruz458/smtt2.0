@@ -260,19 +260,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7/inputmask.min.js"></script>
   <script src="function.js"></script>
-  <script>
-  const rodape = document.querySelector('.rodape');
-
-  window.addEventListener('scroll', () => {
-    // Verifica se chegou ao final da página
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 5) {
-      rodape.style.display = 'block';
-    } else {
-      rodape.style.display = 'none';
-    }
-  });
-</script>
-
+ 
   <!-- Script de login e ENTER para próximo campo -->
   <script>
     document.getElementById("loginForm").addEventListener("submit", function (e) {
@@ -302,9 +290,26 @@
       });
     });
   </script>
-  <footer class="rodape">
+  <!-- Rodapé -->
+<footer class="rodape">
   Desenvolvido por Euler Cruz, Igor Seara e Irandi Silva
 </footer>
+
+<!-- Script para mostrar o rodapé no final -->
+<script>
+  const rodape = document.querySelector('.rodape');
+
+  window.addEventListener('scroll', () => {
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const bottom = document.body.offsetHeight - 10; // margem de segurança
+
+    if (scrollPosition >= bottom) {
+      rodape.style.display = 'block';
+    } else {
+      rodape.style.display = 'none';
+    }
+  });
+</script>
 
 </body>
 </html>
