@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
     #campoAtendente {
       position: absolute;
       top: 10px;
@@ -23,17 +28,24 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
+      background-color: #e9e9e9;
     }
 
     .login-form {
-      background: #f1f1f1;
-      padding: 20px;
+      background: #ffffff;
+      padding: 30px;
       border-radius: 10px;
-      box-shadow: 0 0 10px #ccc;
+      box-shadow: 0 0 15px #bbb;
     }
 
     .input-group {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
     }
 
     .erro {
@@ -43,6 +55,68 @@
 
     #formularioSection {
       display: none;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .input-container {
+      margin-bottom: 15px;
+    }
+
+    .input-container input {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    .input-container label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .input-container div {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .input-container div label {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .input-container button {
+      margin-right: 10px;
+    }
+
+    .input-container:last-child {
+      margin-top: 20px;
+    }
+
+    .div-branca {
+      margin-top: 20px;
+    }
+
+    .div-branca button {
+      margin-right: 10px;
+    }
+
+    #agendamentoForm {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    #agendamentoForm .input-container {
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      #agendamentoForm {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -160,7 +234,7 @@
         <input type="text" id="horario" required />
       </div>
 
-      <div class="input-container">
+      <div class="input-container" style="grid-column: span 2;">
         <label>Tipo de Deficiência:</label>
         <div>
           <label><input type="radio" name="deficiencia" value="TEA" required /> TEA</label>
@@ -171,7 +245,7 @@
         </div>
       </div>
 
-      <div class="input-container">
+      <div class="input-container" style="grid-column: span 2;">
         <button type="button" id="gerarPdf">PASSE LIVRE</button>
         <button type="button" id="credencialEstacionamento" class="botaoEstacionamento">CREDENCIAL DE ESTACIONAMENTO</button>
         <button type="button" id="limparCampos">APAGAR TUDO</button>
@@ -189,15 +263,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7/inputmask.min.js"></script>
   <script src="function.js"></script>
 
-  <!-- Script de login integrado -->
+  <!-- Script de login e ENTER para próximo campo -->
   <script>
     document.getElementById("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
-
       const atendente = document.getElementById("atendenteLogin").value.trim();
       const senha = document.getElementById("senha").value;
 
-      // Validação simples
       if (atendente && senha === "1234") {
         document.getElementById("loginSection").style.display = "none";
         document.getElementById("formularioSection").style.display = "block";
@@ -207,6 +279,17 @@
       } else {
         document.getElementById("mensagemErro").textContent = "Login inválido. Tente novamente.";
       }
+    });
+
+    // ENTER → próximo campo
+    document.querySelectorAll('input').forEach((input, index, allInputs) => {
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          const next = allInputs[index + 1];
+          if (next) next.focus();
+        }
+      });
     });
   </script>
 </body>
