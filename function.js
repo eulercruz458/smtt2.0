@@ -228,6 +228,7 @@ gerarPdf.addEventListener('click', async () => {
     // Captura todos os valores do formulário
     
     const nome = document.getElementById('nome').value;
+    const atendente = window.nomeAtendente || "SemAtendente";
     const rg = document.getElementById('rg').value;
     const ssp = document.getElementById('ssp').value;
     const cpf = document.getElementById('cpf').value;
@@ -313,8 +314,7 @@ gerarPdf.addEventListener('click', async () => {
 
 
  // Salva o PDF
- const nomeAtendenteURL = new URLSearchParams(window.location.search).get('atendente') || '';
- const nomeArquivo = `${nome.replace(/ /g, '_')}_${cpf}_${window.nomeAtendente}.pdf`; // Substitui espaços por sublinhados
+ const nomeArquivo = `${nome.replace(/ /g, '_')}_${cpf}_${window.Atendente}.pdf`; // Substitui espaços por sublinhados
 
   if (cpfResponsavel) {
      doc.addPage(); // Adiciona uma nova página
