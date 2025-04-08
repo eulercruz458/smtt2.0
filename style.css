@@ -19,21 +19,22 @@ body {
   padding: 20px;
   color: #333;
   overflow-x: hidden;
+  font-size: 14px; /* Fonte menor */
 }
 
 /* Título principal */
 h1 {
   text-align: center;
   color: black;
-  font-size: 2.5rem;
-  margin: 0 auto 20px;
+  font-size: 2rem; /* Reduzido */
+  margin: 0 auto 16px;
   width: 100%;
 }
 
 /* Seção do formulário */
 form {
   background: #ffffff;
-  padding: 20px;
+  padding: 16px;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   max-width: 1000px;
@@ -47,8 +48,8 @@ form {
 /* Div lateral branca */
 .div-branca {
   background-color: #ffffff;
-  padding: 20px;
-  width: 200px;
+  padding: 16px;
+  width: 180px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   float: right;
@@ -58,7 +59,7 @@ form {
 /* Labels dos campos */
 label {
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 0.95rem; /* Reduzido */
   color: black;
   margin-bottom: 2px;
   grid-column: span 2;
@@ -68,11 +69,11 @@ label {
 input[type="text"],
 input[type="date"] {
   width: 100%;
-  padding: 10px;
+  padding: 6px; /* Menor */
   border: 2px solid #ccc;
-  border-radius: 8px;
+  border-radius: 6px;
   background-color: #f9f9f9;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Reduzido */
   color: #333;
   transition: all 0.3s ease;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -89,13 +90,13 @@ input[type="date"]:focus {
 /* Botões */
 button {
   width: 100%;
-  padding: 8px;
+  padding: 6px; /* Menor */
   background-color: #28a745;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 1rem; /* Reduzido */
   transition: background-color 0.3s ease;
   grid-column: span 2;
   margin-top: 2px;
@@ -112,8 +113,9 @@ button:focus {
 /* Botões de trocar cores */
 .botoes-laterais {
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 100px;         /* Mais para baixo */
+  left: 10px;         /* Mudado para esquerda */
+  right: auto;        /* Remove o right */
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -123,8 +125,8 @@ button:focus {
 #trocarRoxoCinza,
 #trocarCinzaRoxo {
   width: auto;
-  padding: 10px 15px;
-  font-size: 1rem;
+  padding: 8px 12px;
+  font-size: 0.9rem; /* Reduzido */
   color: white;
   border: none;
   border-radius: 6px;
@@ -152,7 +154,7 @@ button:focus {
 .botaoEstacionamento {
   background-color: #007bff;
   border-radius: 6px;
-  font-size: 1.2rem;
+  font-size: 1rem; /* Reduzido */
   grid-column: span 2;
   margin-top: 4px;
 }
@@ -166,8 +168,8 @@ button:focus {
   background-color: #dc3545;
   color: white;
   border: none;
-  padding: 10px 18px;
-  font-size: 1.2rem;
+  padding: 8px 14px;
+  font-size: 1rem; /* Reduzido */
   cursor: pointer;
   border-radius: 6px;
   transition: background-color 0.3s, transform 0.2s;
@@ -185,11 +187,11 @@ button:focus {
 /* Container principal da tela de login */
 .container {
   background-color: white;
-  padding: 40px 30px;
+  padding: 30px 20px;
   border-radius: 12px;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 420px;
+  max-width: 320px;
   margin: 40px auto;
 }
 
@@ -202,8 +204,8 @@ button:focus {
 /* Título do login */
 .login-form h2 {
   text-align: center;
-  margin-bottom: 25px;
-  font-size: 1.8rem;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
   color: #333;
 }
 
@@ -211,20 +213,20 @@ button:focus {
 .input-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .input-group label {
-  font-size: 1rem;
-  margin-bottom: 6px;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
   color: #444;
 }
 
 .input-group input {
-  padding: 12px;
+  padding: 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 1rem;
+  font-size: 0.9rem;
   outline: none;
   transition: border-color 0.3s;
 }
@@ -235,13 +237,13 @@ button:focus {
 
 /* Botão de login */
 .login-form button {
-  margin-top: 10px;
-  padding: 12px;
+  margin-top: 8px;
+  padding: 10px;
   border: none;
   border-radius: 6px;
   background-color: #007bff;
   color: white;
-  font-size: 1rem;
+  font-size: 0.95rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -253,9 +255,9 @@ button:focus {
 /* Mensagem de erro */
 .erro {
   color: #d8000c;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 
 /* Campo do atendente fixo no topo */
@@ -264,11 +266,12 @@ button:focus {
   top: 10px;
   left: 10px;
   background-color: rgba(255, 255, 255, 0.95);
-  padding: 8px 12px;
+  padding: 6px 10px;
   border-radius: 6px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   font-family: sans-serif;
   z-index: 1000;
+  font-size: 0.9rem;
 }
 
 #campoAtendenteFixo label {
