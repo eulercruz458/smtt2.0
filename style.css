@@ -265,44 +265,4 @@ button:focus {
   font-weight: normal;
 }
 
-/* Seções do formulário */
-form fieldset {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  grid-column: span 2;
-}
-
-form legend {
-  font-weight: bold;
-  font-size: 1rem;
-  padding: 0 5px;
-  color: #333;
-}
-
-/* Tornar layout mais compacto */
-form {
-  padding: 20px;
-  max-width: 800px;
-  font-size: 0.9rem;
-}
-
-/* Inputs e labels ajustados */
-label {
-  font-size: 0.95rem;
-}
-
-input[type="text"],
-input[type="date"],
-select {
-  padding: 8px;
-  font-size: 0.9rem;
-}
-
-/* Compactar botão */
-button {
-  padding: 10px;
-  font-size: 1rem;
-}
 
