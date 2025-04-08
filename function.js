@@ -8,14 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nomeAtendenteURL = new URLSearchParams(window.location.search).get('atendente') || '';
     console.log("Atendente da URL:", nomeAtendenteURL);
 
-    // Torna o nome globalmente acessível
-    window.nomeAtendente = nomeAtendenteURL;
-
-    // ✅ Preenche o campo "protocolo" se existir
-    const campoProtocolo = document.getElementById("protocolo");
-    if (campoProtocolo && nomeAtendenteURL) {
-        campoProtocolo.value = nomeAtendenteURL;
-    }
+    const atendente = window.nomeAtendente || "SemAtendente";
 
     // ✅ Botão "Limpar Campos"
     const limparButton = document.getElementById("limparCampos");
