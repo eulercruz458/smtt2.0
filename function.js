@@ -3,25 +3,32 @@ const trocarCinzaRoxo = document.getElementById('trocarCinzaRoxo');
 
 // function.js corrigido com todos os trechos combinados e otimizados
 
-const limparButton = document.getElementById("limparCampos");
-if (limparButton) {
-  limparButton.addEventListener("click", function () {
-    const inputs = document.querySelectorAll("input, textarea, select");
-    inputs.forEach(function (input) {
-      if (
-        input.type === "radio" ||
-        input.type === "checkbox"
-      ) {
-        input.checked = false;
-      } else if (
-        input.id !== "dataHoje" &&
-        input.id !== "atendenteManual" // <-- NÃO apagar o atendente
-      ) {
-        input.value = "";
-      }
-    });
-  });
-}
+document.addEventListener("DOMContentLoaded", function () {
+    // ✅ Captura o nome do atendente da URL
+    const nomeAtendenteURL = new URLSearchParams(window.location.search).get('atendente') || '';
+    console.log("Atendente da URL:", nomeAtendenteURL);
+
+    const atendente = window.nomeAtendente || "SemAtendente";
+
+    // ✅ Botão "Limpar Campos"
+    const limparButton = document.getElementById("limparCampos");
+    if (limparButton) {
+        limparButton.addEventListener("click", function () {
+            const inputs = document.querySelectorAll("input, textarea, select");
+            inputs.forEach(function (input) {
+                if (input.type === "radio" || input.type === "checkbox") {
+                    input.checked = false;
+                } else if (input.id !== "dataHoje") {
+                    input.value = "";
+                }
+            });
+
+            // Repreenche o campo protocolo após limpar
+            if (campoProtocolo && nomeAtendenteURL) {
+                campoProtocolo.value = nomeAtendenteURL;
+            }
+        });
+    }
 
 
     // ✅ Enter para ir para o próximo campo
