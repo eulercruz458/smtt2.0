@@ -120,8 +120,8 @@ button:focus {
 }
 
 .botoes-laterais {
-  position: absolute;
-  top: 20px;      /* Aumente esse valor para subir mais */
+  position: fixed;
+  top: 60px;      /* Aumente esse valor para subir mais */
   right: 40px;    /* Ajusta a distância da direita */
   display: flex;
   flex-direction: column;
