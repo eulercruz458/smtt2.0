@@ -261,35 +261,48 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7/inputmask.min.js"></script>
   <script src="function.js"></script>
  
-  <!-- Script de login e ENTER para próximo campo -->
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const atendente = document.getElementById("atendenteLogin").value.trim();
-      const senha = document.getElementById("senha").value;
+ <script>
+  const usuarios = {
+    "FILADELFIA": "030303",
+    "VANESSA": "9869",
+    "WINIE": "8103",
+    "SOLANGE": "502971",
+    "EULER": "cr7gostoso",
+    "IRANDI": "@Smtt1234",
+    "CELMA": "MAR@5887"
+  };
 
-      if (atendente && senha === "1234") {
-        document.getElementById("loginSection").style.display = "none";
-        document.getElementById("formularioSection").style.display = "block";
-        document.getElementById("nomeAtendenteSpan").textContent = atendente;
-        document.getElementById("atendenteManual").value = atendente;
-        window.nomeAtendente = atendente;
-      } else {
-        document.getElementById("mensagemErro").textContent = "Login inválido. Tente novamente.";
+  document.getElementById("loginForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const atendenteInput = document.getElementById("atendenteLogin").value.trim().toUpperCase();
+    const senha = document.getElementById("senha").value;
+
+    if (usuarios[atendenteInput] && usuarios[atendenteInput] === senha) {
+      document.getElementById("loginSection").style.display = "none";
+      document.getElementById("formularioSection").style.display = "block";
+      document.getElementById("nomeAtendenteSpan").textContent = atendenteInput;
+      document.getElementById("atendenteManual").value = atendenteInput;
+      window.nomeAtendente = atendenteInput;
+      document.getElementById("mensagemErro").textContent = ""; // limpa mensagem
+    } else {
+      document.getElementById("mensagemErro").textContent = "Login inválido. Tente novamente.";
+    }
+  });
+
+  // ENTER → próximo campo
+  document.querySelectorAll('input').forEach((input, index, allInputs) => {
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const next = allInputs[index + 1];
+        if (next) next.focus();
       }
     });
+  });
+</script>
 
-    // ENTER → próximo campo
-    document.querySelectorAll('input').forEach((input, index, allInputs) => {
-      input.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          const next = allInputs[index + 1];
-          if (next) next.focus();
-        }
-      });
-    });
-  </script>
+
   <!-- Rodapé -->
 <footer class="rodape">
   Desenvolvido por Euler Cruz, Igor Seara e Irandi Silva
