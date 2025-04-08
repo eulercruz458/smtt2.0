@@ -289,7 +289,7 @@ gerarPdf.addEventListener('click', async () => {
  doc.text(`${bairro}`, 50, 102);
  doc.text(`${telefone1Formatado}`, 51, 112);
  doc.text(`${telefone2Formatado}`, 155, 112);
- doc.text(`${nomeAtendenteSpan}`, 163, 43);
+ doc.text(`${nomeAtendenteParaCapa}`, 163, 38);
 
    if (sexo === 'masculino') {
      doc.text('X', 162, 60); // Posição para masculino
