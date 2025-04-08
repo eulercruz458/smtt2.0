@@ -70,7 +70,7 @@ label {
   font-weight: 500;
   font-size: 1.1rem;
   color: black;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
   grid-column: span 2;
 }
 
@@ -119,13 +119,16 @@ button:focus {
   outline: none;
 }
 
-/* Área lateral dos botões de trocar cartão */
 .botoes-laterais {
+  position: absolute;
+  top: 20px;      /* Aumente esse valor para subir mais */
+  right: 40px;    /* Ajusta a distância da direita */
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-self: flex-start;
+  z-index: 1000;
 }
+
 
 /* Botões de trocar cores */
 #trocarRoxoCinza {
