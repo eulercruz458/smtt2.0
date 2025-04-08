@@ -30,27 +30,17 @@ h1 {
   width: 100%;
 }
 
-/* Container flexível para formulário e botões laterais */
-.form-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-  flex-wrap: wrap;
-}
-
 /* Seção do formulário */
 form {
   background: #ffffff;
-  padding: 30px;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5px;
+  gap: 4px;
   align-items: center;
 }
 
@@ -74,20 +64,21 @@ label {
   grid-column: span 2;
 }
 
+/* Inputs */
 input[type="text"],
 input[type="date"] {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: 2px solid #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
-  box-sizing: border-box;
   font-size: 1rem;
   color: #333;
   transition: all 0.3s ease;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* Focus inputs */
 input[type="text"]:focus,
 input[type="date"]:focus {
   border-color: #007bff;
@@ -96,7 +87,7 @@ input[type="date"]:focus {
   outline: none;
 }
 
-/* Botões gerais */
+/* Botões */
 button {
   width: 100%;
   padding: 8px;
@@ -108,7 +99,7 @@ button {
   font-size: 1.2rem;
   transition: background-color 0.3s ease;
   grid-column: span 2;
-  margin-top: 5px;
+  margin-top: 4px;
 }
 
 button:hover {
@@ -119,22 +110,31 @@ button:focus {
   outline: none;
 }
 
+/* Botões de trocar cores - reposicionados */
 .botoes-laterais {
   position: fixed;
-  top: 60px;      /* Aumente esse valor para subir mais */
-  right: 40px;    /* Ajusta a distância da direita */
+  top: 10px;
+  right: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
   z-index: 1000;
 }
 
+#trocarRoxoCinza,
+#trocarCinzaRoxo {
+  width: auto;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-/* Botões de trocar cores */
 #trocarRoxoCinza {
   background-color: #8b8b8b;
-  border-radius: 6px;
-  font-size: 1.2rem;
 }
 
 #trocarRoxoCinza:hover {
@@ -143,8 +143,6 @@ button:focus {
 
 #trocarCinzaRoxo {
   background-color: #8400ff;
-  border-radius: 6px;
-  font-size: 1.2rem;
 }
 
 #trocarCinzaRoxo:hover {
@@ -157,7 +155,7 @@ button:focus {
   border-radius: 6px;
   font-size: 1.2rem;
   grid-column: span 2;
-  margin-top: 5px;
+  margin-top: 4px;
 }
 
 .botaoEstacionamento:hover {
@@ -174,7 +172,7 @@ button:focus {
   cursor: pointer;
   border-radius: 6px;
   transition: background-color 0.3s, transform 0.2s;
-  margin-top: 5px;
+  margin-top: 4px;
 }
 
 #limparCampos:hover {
