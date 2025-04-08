@@ -238,6 +238,7 @@ gerarPdf.addEventListener('click', async () => {
     const deficiencia = document.querySelector('input[name="deficiencia"]:checked').value;
     const horario = document.getElementById('horario').value;
     const atendente = document.getElementById("atendenteManual").value;
+    const nomeAtendenteParaCapa = document.getElementById("nomeAtendenteSpan").textContent;
 
 
     
@@ -288,7 +289,7 @@ gerarPdf.addEventListener('click', async () => {
  doc.text(`${bairro}`, 50, 102);
  doc.text(`${telefone1Formatado}`, 51, 112);
  doc.text(`${telefone2Formatado}`, 155, 112);
- doc.text(`${atendenteManual}`, 163, 35);
+ doc.text(`${nomeAtendenteSpan}`, 163, 43);
 
    if (sexo === 'masculino') {
      doc.text('X', 162, 60); // Posição para masculino
