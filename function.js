@@ -237,7 +237,8 @@ gerarPdf.addEventListener('click', async () => {
     const sexo = document.querySelector('input[name="sexo"]:checked').value;
     const deficiencia = document.querySelector('input[name="deficiencia"]:checked').value;
     const horario = document.getElementById('horario').value;
-    const atendente = document.getElementById("nomeAtendenteSpan").textContent;
+    const atendente = document.getElementById("atendenteManual").value;
+
 
     
     const { cpfResponsavel, nomeOutroResponsavel} = verificarIdade(nomeMae);
@@ -380,7 +381,7 @@ credencialEstacionamento.addEventListener('click', async () => {
     const telefone1 = document.getElementById('telefone1').value;
     const dataAgendamento = document.getElementById('dataAgendamento').value;
     const horario = document.getElementById('horario').value;
-    const atendente = document.getElementById("nomeAtendenteSpan").textContent;
+    const atendente = document.getElementById("atendenteManual").value;
 
 
     // Formata as datas e o telefone
@@ -534,9 +535,8 @@ trocarCinzaRoxo.addEventListener('click', async () => {
     const dataHojeFormatada = formatarDataHoje(dataHoje);
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value
-    const atendente = document.getElementById("nomeAtendenteSpan").textContent;
-
-
+    const atendente = document.getElementById("atendenteManual").value;
+ 
     
     const numeroCartao = prompt("Informe o número do cartão:");
     
@@ -672,7 +672,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
     const dataHojeFormatada = formatarDataHoje(dataHoje);
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value;
-    const atendente = document.getElementById("nomeAtendenteSpan").textContent;
+    const atendente = document.getElementById("atendenteManual").value;
     
 
     const numeroCartao = prompt("Informe o número do cartão:");
