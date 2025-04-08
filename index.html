@@ -139,119 +139,129 @@
   </form>
 </section>
 
-  <form id="agendamentoForm">
+  <!-- Formulário principal -->
+  <section id="formularioSection">
+    <div id="campoAtendente">Atendente: <span id="nomeAtendenteSpan"></span></div>
 
-  <fieldset>
-    <legend>Dados do Atendimento</legend>
-    <div class="input-container">
-      <label for="dataHoje">Data de hoje:</label>
-      <input type="date" id="dataHoje" required />
-    </div>
-    <div class="input-container">
-      <label for="atendenteManual">Nome do Atendente:</label>
-      <input type="text" id="atendenteManual" name="atendenteManual" readonly />
-    </div>
-  </fieldset>
+    <h1>Formulário de Agendamento</h1>
 
-  <fieldset>
-    <legend>Dados Pessoais</legend>
-    <div class="input-container">
-      <label for="nome">Nome Completo:</label>
-      <input type="text" id="nome" required />
-    </div>
-    <div class="input-container">
-      <label for="dataNascimento">Data de nascimento:</label>
-      <input type="date" id="dataNascimento" required />
-    </div>
-    <div class="input-container">
-      <label for="rg">RG:</label>
-      <input type="text" id="rg" required />
-    </div>
-    <div class="input-container">
-      <label for="ssp">SSP:</label>
-      <input type="text" id="ssp" required />
-    </div>
-    <div class="input-container">
-      <label for="cpf">CPF:</label>
-      <input type="text" id="cpf" required />
-    </div>
-    <div class="input-container">
-      <label for="nomeMae">Nome da Mãe:</label>
-      <input type="text" id="nomeMae" required />
-    </div>
-    <div class="input-container">
-      <label>Sexo:</label>
-      <div>
-        <label><input type="radio" name="sexo" value="masculino" required /> Masculino</label>
-        <label><input type="radio" name="sexo" value="feminino" /> Feminino</label>
+    <form id="agendamentoForm">
+      <div class="input-container">
+        <label for="dataHoje">Data de hoje:</label>
+        <input type="date" id="dataHoje" required />
       </div>
-    </div>
-  </fieldset>
 
-  <fieldset>
-    <legend>Endereço</legend>
-    <div class="input-container">
-      <label for="endereco">Endereço:</label>
-      <input type="text" id="endereco" required />
-    </div>
-    <div class="input-container">
-      <label for="numCasa">N°:</label>
-      <input type="text" id="numCasa" required />
-    </div>
-    <div class="input-container">
-      <label for="bairro">Bairro:</label>
-      <input type="text" id="bairro" required />
-    </div>
-    <div class="input-container">
-      <label for="cidade">Cidade:</label>
-      <input type="text" id="cidade" required />
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Contato</legend>
-    <div class="input-container">
-      <label for="telefone1">Telefone (1):</label>
-      <input type="text" id="telefone1" required />
-    </div>
-    <div class="input-container">
-      <label for="telefone2">Telefone (2):</label>
-      <input type="text" id="telefone2" required />
-    </div>
-  </fieldset>
-
-  <fieldset>
-    <legend>Agendamento</legend>
-    <div class="input-container">
-      <label for="dataAgendamento">Data do Agendamento:</label>
-      <input type="date" id="dataAgendamento" required />
-    </div>
-    <div class="input-container">
-      <label for="horario">Horário:</label>
-      <input type="text" id="horario" required />
-    </div>
-  </fieldset>
-
-  <fieldset style="grid-column: span 2;">
-    <legend>Tipo de Deficiência</legend>
-    <div class="input-container">
-      <div>
-        <label><input type="radio" name="deficiencia" value="TEA" required /> TEA</label>
-        <label><input type="radio" name="deficiencia" value="mental" /> Mental</label>
-        <label><input type="radio" name="deficiencia" value="auditivo" /> Auditivo</label>
-        <label><input type="radio" name="deficiencia" value="visual" /> Visual</label>
-        <label><input type="radio" name="deficiencia" value="fisico" /> Físico</label>
+      <div class="input-container">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" required />
       </div>
+
+      <div class="input-container">
+        <label for="dataNascimento">Data de nascimento:</label>
+        <input type="date" id="dataNascimento" required />
+      </div>
+
+      <div class="input-container">
+        <label for="rg">RG:</label>
+        <input type="text" id="rg" required />
+      </div>
+
+      <div class="input-container">
+        <label for="ssp">SSP:</label>
+        <input type="text" id="ssp" required />
+      </div>
+
+      <div class="input-container">
+        <label for="atendenteManual">Nome do Atendente:</label>
+        <input type="text" id="atendenteManual" name="atendenteManual" readonly />
+      </div>
+
+      <div class="input-container">
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" required />
+      </div>
+
+      <div class="input-container">
+        <label for="nomeMae">Nome da Mãe:</label>
+        <input type="text" id="nomeMae" required />
+      </div>
+
+      <div class="input-container">
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" required />
+      </div>
+
+      <div class="input-container">
+        <label for="numCasa">N°:</label>
+        <input type="text" id="numCasa" required />
+      </div>
+
+      <div class="input-container">
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" required />
+      </div>
+
+      <div class="input-container">
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" required />
+      </div>
+
+      <div class="input-container">
+        <label for="telefone1">Telefone (1):</label>
+        <input type="text" id="telefone1" required />
+      </div>
+
+      <div class="input-container">
+        <label for="telefone2">Telefone (2):</label>
+        <input type="text" id="telefone2" required />
+      </div>
+
+      <div class="input-container">
+        <label>Sexo:</label>
+        <div>
+          <label><input type="radio" name="sexo" value="masculino" required /> Masculino</label>
+          <label><input type="radio" name="sexo" value="feminino" /> Feminino</label>
+        </div>
+      </div>
+
+      <div class="input-container">
+        <label for="dataAgendamento">Data do Agendamento:</label>
+        <input type="date" id="dataAgendamento" required />
+      </div>
+
+      <div class="input-container">
+        <label for="horario">Horário:</label>
+        <input type="text" id="horario" required />
+      </div>
+
+      <div class="input-container" style="grid-column: span 2;">
+        <label>Tipo de Deficiência:</label>
+        <div>
+          <label><input type="radio" name="deficiencia" value="TEA" required /> TEA</label>
+          <label><input type="radio" name="deficiencia" value="mental" /> Mental</label>
+          <label><input type="radio" name="deficiencia" value="auditivo" /> Auditivo</label>
+          <label><input type="radio" name="deficiencia" value="visual" /> Visual</label>
+          <label><input type="radio" name="deficiencia" value="fisico" /> Físico</label>
+        </div>
+      </div>
+
+      <div class="input-container" style="grid-column: span 2;">
+        <button type="button" id="gerarPdf">PASSE LIVRE</button>
+        <button type="button" id="credencialEstacionamento" class="botaoEstacionamento">CREDENCIAL DE ESTACIONAMENTO</button>
+        <button type="button" id="limparCampos">APAGAR TUDO</button>
+      </div>
+    </form>
+
+    <div class="div-branca">
+      <button type="button" id="trocarCinzaRoxo">TROCAR PARA O ROXO (CINZA → ROXO)</button>
+      <button type="button" id="trocarRoxoCinza">TROCAR PARA O CINZA (ROXO → CINZA)</button>
     </div>
-  </fieldset>
+  </section>
 
-  <div class="input-container" style="grid-column: span 2;">
-    <button type="button" id="gerarPdf">PASSE LIVRE</button>
-    <button type="button" id="credencialEstacionamento" class="botaoEstacionamento">CREDENCIAL DE ESTACIONAMENTO</button>
-    <button type="button" id="limparCampos">APAGAR TUDO</button>
-  </div>
-
-</form>
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.7/inputmask.min.js"></script>
+  <script src="function.js"></script>
 
   <!-- Script de login e ENTER para próximo campo -->
   <script>
