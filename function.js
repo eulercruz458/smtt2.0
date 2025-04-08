@@ -221,7 +221,6 @@ gerarPdf.addEventListener('click', async () => {
     // Captura todos os valores do formulário
     
     const nome = document.getElementById('nome').value;
-    const atendente = window.nomeAtendente || "SemAtendente";
     const rg = document.getElementById('rg').value;
     const ssp = document.getElementById('ssp').value;
     const cpf = document.getElementById('cpf').value;
@@ -236,8 +235,10 @@ gerarPdf.addEventListener('click', async () => {
     const telefone2 = document.getElementById('telefone2').value;
     const dataAgendamento = document.getElementById('dataAgendamento').value;
     const sexo = document.querySelector('input[name="sexo"]:checked').value;
-  const deficiencia = document.querySelector('input[name="deficiencia"]:checked').value;
+    const deficiencia = document.querySelector('input[name="deficiencia"]:checked').value;
     const horario = document.getElementById('horario').value;
+    const atendente = document.getElementById("atendenteManual").value;
+
     
     const { cpfResponsavel, nomeOutroResponsavel} = verificarIdade(nomeMae);
   
