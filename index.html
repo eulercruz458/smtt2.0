@@ -203,6 +203,7 @@
         document.getElementById("formularioSection").style.display = "block";
         document.getElementById("nomeAtendenteSpan").textContent = atendente;
         document.getElementById("atendenteManual").value = atendente;
+        window.nomeAtendente = atendente;
       } else {
         document.getElementById("mensagemErro").textContent = "Login inválido. Tente novamente.";
       }
