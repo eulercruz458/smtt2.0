@@ -381,8 +381,7 @@ credencialEstacionamento.addEventListener('click', async () => {
     const telefone1 = document.getElementById('telefone1').value;
     const dataAgendamento = document.getElementById('dataAgendamento').value;
     const horario = document.getElementById('horario').value;
-    const atendente = document.getElementById("atendenteManual").value;
-    const nomeAtendenteParaCapa = document.getElementById("nomeAtendenteSpan").textContent;
+   
    
 
 
@@ -537,9 +536,7 @@ trocarCinzaRoxo.addEventListener('click', async () => {
     const dataHojeFormatada = formatarDataHoje(dataHoje);
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value
-    const atendente = document.getElementById("atendenteManual").value;
-    const nomeAtendenteParaCapa = document.getElementById("nomeAtendenteSpan").textContent;
- 
+    
     
     const numeroCartao = prompt("Informe o número do cartão:");
     
@@ -675,8 +672,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
     const dataHojeFormatada = formatarDataHoje(dataHoje);
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value;
-    const atendente = document.getElementById("atendenteManual").value;
-    const nomeAtendenteParaCapa = document.getElementById("nomeAtendenteSpan").textContent;
+   
     
 
     const numeroCartao = prompt("Informe o número do cartão:");
