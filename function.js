@@ -514,7 +514,7 @@ let y = rectY + 20; // Ajusta a posição do corpo do texto para começar abaixo
 
     // Salva o PDF com o nome personalizado
     const nomeArquivoCredencial = `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
-    doc.save(nomeArquivoCredencial);
+    doc.save(nomeArquivo);
 });
 
 trocarCinzaRoxo.addEventListener('click', async () => {
