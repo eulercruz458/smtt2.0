@@ -671,7 +671,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
     const dataNascimento = document.getElementById('dataNascimento').value;
     const atendente = document.getElementById("atendenteManual").value; 
      // Salva o PDF com o nome personalizado
-    const nomeRoxoCinza =  `${nome.replace(/ /g, '_')}_${cpf}_${atentente}.pdf`;
+    const nomeRoxoCinza =  `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
    
     
 
