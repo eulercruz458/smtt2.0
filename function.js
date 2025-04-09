@@ -367,7 +367,7 @@ credencialEstacionamento.addEventListener('click', async () => {
     
     // Captura o nome do atendente da URL
     const params = new URLSearchParams(window.location.search);
-    const atendente = params.get('atendente') || ''; // se não tiver, usa vazio
+    const atendente = document.getElementById("atendenteManual").value;
     const nome = document.getElementById('nome').value;
     const rg = document.getElementById('rg').value;
     const ssp = document.getElementById('ssp').value;
@@ -513,7 +513,7 @@ let y = rectY + 20; // Ajusta a posição do corpo do texto para começar abaixo
 
 
     // Salva o PDF com o nome personalizado
-    const nomeArquivoCredencial = `${nome.replace(/ /g, '_')}_${cpf}.pdf`;
+    const nomeArquivoCredencial = `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
     doc.save(nomeArquivoCredencial);
 });
 
