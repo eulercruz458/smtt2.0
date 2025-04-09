@@ -381,6 +381,7 @@ credencialEstacionamento.addEventListener('click', async () => {
     const telefone1 = document.getElementById('telefone1').value;
     const dataAgendamento = document.getElementById('dataAgendamento').value;
     const horario = document.getElementById('horario').value;
+    const atendente = document.getElementById("atendenteManual").value;
    
    
 
@@ -536,6 +537,7 @@ trocarCinzaRoxo.addEventListener('click', async () => {
     const dataHojeFormatada = formatarDataHoje(dataHoje);
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value
+    const atendente = document.getElementById("atendenteManual").value;
     
     
     const numeroCartao = prompt("Informe o número do cartão:");
@@ -643,7 +645,7 @@ trocarCinzaRoxo.addEventListener('click', async () => {
 
     }
      // Salva o PDF com o nome personalizado
-    const nomeCinzaRoxo = `${nome.replace(/ /g, '_')}_${cpf}.pdf`;
+    const nomeCinzaRoxo =  `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
     doc.save(nomeCinzaRoxo);
 });
 
@@ -670,6 +672,8 @@ trocarRoxoCinza.addEventListener('click', async () => {
     const dataHojeFormatada = formatarDataHoje(dataHoje);
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value;
+    const atendente = document.getElementById("atendenteManual").value;
+
    
     
 
@@ -771,7 +775,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
         
     }
      // Salva o PDF com o nome personalizado
-    const nomeRoxoCinza = `${nome.replace(/ /g, '_')}_${cpf}.pdf`;
+    const nomeRoxoCinza =  `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
     doc.save(nomeRoxoCinza);
 });
 
