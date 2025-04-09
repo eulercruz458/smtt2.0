@@ -670,6 +670,8 @@ trocarRoxoCinza.addEventListener('click', async () => {
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value;
     const atendente = document.getElementById("atendenteManual").value; 
+     // Salva o PDF com o nome personalizado
+    const nomeRoxoCinza =  `${nome.replace(/ /g, '_')}_${cpf}_${atentente}.pdf`;
    
     
 
@@ -771,8 +773,6 @@ trocarRoxoCinza.addEventListener('click', async () => {
         
     }
 
-     // Salva o PDF com o nome personalizado
-    const nomeRoxoCinza =  `${nome.replace(/ /g, '_')}_${cpf}_${atentente}.pdf`;
     doc.save(nomeRoxoCinza);
 });
 
