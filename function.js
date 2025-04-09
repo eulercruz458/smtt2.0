@@ -656,8 +656,6 @@ trocarRoxoCinza.addEventListener('click', async () => {
     let autorizacao = false;
 
     // Captura o nome do atendente da URL
-    const params = new URLSearchParams(window.location.search);
-    const atendente = params.get('atendente') || '';
 
     const nome = document.getElementById('nome').value;
     const rg = document.getElementById('rg').value;
