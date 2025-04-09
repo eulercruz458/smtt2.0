@@ -642,9 +642,6 @@ trocarCinzaRoxo.addEventListener('click', async () => {
 
 
     }
-    // Salva o PDF com o nome personalizado 
-    const nomeArquivoTrocaCartaoCinzaRoxo =  `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
-    doc.save(nomeArquivoTrocaCartaoCinzaRoxo);
 });
 
    
@@ -770,12 +767,5 @@ trocarRoxoCinza.addEventListener('click', async () => {
         doc.text(textoObsCoordenador, 100, 245, { align: 'center' });
         
     }
-
-
-
-    // Salva o PDF com o nome personalizado
-    const nomeArquivoTrocaCartaoRoxoCinza = `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;    
-    doc.save(nomeArquivoTrocaCartaoRoxoCinza);
-
 });
 
