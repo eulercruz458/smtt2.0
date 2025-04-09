@@ -381,6 +381,8 @@ credencialEstacionamento.addEventListener('click', async () => {
     const telefone1 = document.getElementById('telefone1').value;
     const dataAgendamento = document.getElementById('dataAgendamento').value;
     const horario = document.getElementById('horario').value;
+    const atendente = document.getElementById("atendenteManual").value;
+    const nomeAtendenteParaCapa = document.getElementById("nomeAtendenteSpan").textContent;
    
 
 
@@ -514,7 +516,7 @@ let y = rectY + 20; // Ajusta a posição do corpo do texto para começar abaixo
 
     // Salva o PDF com o nome personalizado
     const nomeArquivoCredencial = `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
-    doc.save(nomeArquivo);
+    doc.save(nomeArquivoCredencial);
 });
 
 trocarCinzaRoxo.addEventListener('click', async () => {
@@ -535,6 +537,8 @@ trocarCinzaRoxo.addEventListener('click', async () => {
     const dataHojeFormatada = formatarDataHoje(dataHoje);
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value
+    const atendente = document.getElementById("atendenteManual").value;
+    const nomeAtendenteParaCapa = document.getElementById("nomeAtendenteSpan").textContent;
  
     
     const numeroCartao = prompt("Informe o número do cartão:");
@@ -671,6 +675,8 @@ trocarRoxoCinza.addEventListener('click', async () => {
     const dataHojeFormatada = formatarDataHoje(dataHoje);
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value;
+    const atendente = document.getElementById("atendenteManual").value;
+    const nomeAtendenteParaCapa = document.getElementById("nomeAtendenteSpan").textContent;
     
 
     const numeroCartao = prompt("Informe o número do cartão:");
