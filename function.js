@@ -655,7 +655,7 @@ trocarCinzaRoxo.addEventListener('click', async () => {
 
     }
      // Salva o PDF com o nome personalizado
-    const nomeCinzaRoxo =  `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
+    const nomeCinzaRoxo =  `${nome.replace(/ /g, '_')}_${cpfFormatado3}_${atendente}.pdf`;
     doc.save(nomeCinzaRoxo);
 });
 
@@ -683,13 +683,14 @@ trocarRoxoCinza.addEventListener('click', async () => {
     const telefone1Formatado = formatarTelefone(telefone1);
     const dataNascimento = document.getElementById('dataNascimento').value;
     const atendente = document.getElementById("atendenteManual").value; 
-     // Salva o PDF com o nome personalizado
-    const nomeRoxoCinza =  `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
    
-    
-
     const numeroCartao = prompt("Informe o número do cartão:");
     const cpfFomatado4 = formatarCPF(cpf);
+    
+  // Salva o PDF com o nome personalizado
+    const nomeRoxoCinza =  `${nome.replace(/ /g, '_')}_${cpfFomatado4}_${atendente}.pdf`;
+   
+    
 
 
     if (numeroCartao === null || numeroCartao.trim() === "") {
@@ -770,17 +771,18 @@ trocarRoxoCinza.addEventListener('click', async () => {
     else{
         const nomeRequerente = prompt("Informe o nome do requerente:");
         const cpfRequerente = prompt(`Informe o CPF de ${nomeRequerente}:`);
+        const cpfFomatado5 = formatarCPF(cpfRequerente);
         const cpfRequerenteFormatado = formatarCPF(cpfRequerente);
         const rgRequerente = prompt(`Informe o RG de ${nomeRequerente}:`);
         const sspRequerente = prompt("SSP:");
 
         const textoPrincipalTEA = 
-        `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nomeRequerente} portador(a) do RG nº ${rgRequerenteFormatado} SSP ${sspRequerente} e inscrito(a) no CPF sob o nº ${cpfRequerente}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, AUTORIZO a substituição do Cartão Mais Aracaju Gratuidade da COR ROXA de nº ${numeroCartao} para a COR CINZA que PERMITE o acesso à parte traseira do ônibus mediante a validação da biometria facial do beneficiário.`
+        `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nomeRequerente} portador(a) do RG nº ${rgRequerenteFormatado} SSP ${sspRequerente} e inscrito(a) no CPF sob o nº ${cpfFomatado5}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, AUTORIZO a substituição do Cartão Mais Aracaju Gratuidade da COR ROXA de nº ${numeroCartao} para a COR CINZA que PERMITE o acesso à parte traseira do ônibus mediante a validação da biometria facial do beneficiário.`
 
         doc.setFontSize(12);
         adicionarTextoJustificado(doc, textoPrincipalTEA, 170, 20, 50);
 
-        doc.text(`Para preenchimento da SMTT:\n\nNome do beneficiário: ${nome}\nCPF: ${cpf}`, 15, 185);
+        doc.text(`Para preenchimento da SMTT:\n\nNome do beneficiário: ${nome}\nCPF: ${cpfFomatado5}`, 15, 185);
 
         doc.text(textoAssinaturaCoordenador, 100, 235, { align: 'center' });
         doc.setFontSize(10);
