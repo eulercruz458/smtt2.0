@@ -330,10 +330,8 @@ gerarPdf.addEventListener('click', async () => {
     
 
     
-     const textoPrincipal = `Eu, ${nomeMae}, inscrito(a) no CPF sob o nº ${cpfResponsavel}, responsável pelo(a) menor ${nome}, inscrito(a) no CPF sob o nº ${cpf}, faço a opção pela utilização da catraca, visando à maior disponibilidade de assentos no transporte coletivo, utilizando-se, neste caso, a impressão digital do acompanhante previamente cadastrado no sistema.`
-
-     const textoResponsavel = `Eu, ${nomeOutroResponsavel}, inscrito(a) no CPF sob o nº ${cpfResponsavel}, responsável pelo(a) menor ${nome}, inscrito(a) no CPF sob o nº ${cpf}, faço a opção pela utilização da catraca, visando à maior disponibilidade de assentos no transporte coletivo, utilizando-se, neste caso, a impressão digital do acompanhante previamente cadastrado no sistema.`
-     
+     const textoPrincipal = `Eu, ${nomeMae}, inscrito(a) no CPF sob o nº ${cpfResponsavel}, responsável pelo(a) menor ${nome}, inscrito(a) no CPF sob o nº ${cpf}, faço a opção pela utilização da catraca, visando à maior disponibilidade de assentos no transporte coletivo. A partir deste momento, fico ciente da necessidade do RECONHECIMENTO FACIL DO BENEFICIÁRIO, previamente cadastrado no sistema`
+     const textoResponsavel = `Eu, ${nomeOutroResponsavel}, inscrito(a) no CPF sob o nº ${cpfResponsavel}, responsável pelo(a) menor ${nome}, inscrito(a) no CPF sob o nº ${cpf}, faço a opção pela utilização da catraca, visando à maior disponibilidade de assentos no transporte coletivo. A partir deste momento, fico ciente da necessidade do RECONHECIMENTO FACIL DO BENEFICIÁRIO, previamente cadastrado no sistema`
      const textoAssinatura = `Aracaju/SE, ${dataHojeFormatadaExtenso}.\n\n________________________________________________\nAssinatura do(a) Responsavel`;
 
      
