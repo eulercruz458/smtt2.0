@@ -777,7 +777,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
         const sspRequerente = prompt("SSP:");
 
         const textoPrincipalTEA = 
-        `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nomeRequerente} portador(a) do RG nº ${rgRequerenteFormatado} SSP ${sspRequerente} e inscrito(a) no CPF sob o nº ${cpfFomatado5}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, AUTORIZO a substituição do Cartão Mais Aracaju Gratuidade da COR ROXA de nº ${numeroCartao} para a COR CINZA que PERMITE o acesso à parte traseira do ônibus mediante a validação da biometria facial do beneficiário.`
+        `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nomeRequerente} portador(a) do RG nº ${rgRequerenteFormatado} SSP ${sspRequerente} e inscrito(a) no CPF sob o nº ${cpfFormatado5}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, AUTORIZO a substituição do Cartão Mais Aracaju Gratuidade da COR ROXA de nº ${numeroCartao} para a COR CINZA que PERMITE o acesso à parte traseira do ônibus mediante a validação da biometria facial do beneficiário.`
 
         doc.setFontSize(12);
         adicionarTextoJustificado(doc, textoPrincipalTEA, 170, 20, 50);
