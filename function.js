@@ -192,7 +192,7 @@ function verificarIdade(nomeMae) {
     let nomeOutroResponsavel = null; // Variável para o nome do outro responsável
 
     // Verifica se a idade é menor que 8
-    if (idade < 8) {
+    if (idade < 18) {
         const mensagem = `É necessário fazer a autorização para catraca. Deseja fazer em nome de ${nomeMae}?`;
         autorizacao = confirm(mensagem);
         
