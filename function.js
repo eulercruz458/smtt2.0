@@ -390,7 +390,7 @@ credencialEstacionamento.addEventListener('click', async () => {
     const dataAgendamento = document.getElementById('dataAgendamento').value;
     const horario = document.getElementById('horario').value;
 
-    const cpfFormatado2 = formatarCPF(cpt);
+    const cpfFormatado2 = formatarCPF(cpf);
    
 
 
