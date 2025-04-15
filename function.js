@@ -771,7 +771,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
     else{
         const nomeRequerente = prompt("Informe o nome do requerente:");
         const cpfRequerente = prompt(`Informe o CPF de ${nomeRequerente}:`);
-        const cpfFomatado5 = formatarCPF(cpfRequerente);
+        const cpfFormatado5 = formatarCPF(cpfRequerente);
         const cpfRequerenteFormatado = formatarCPF(cpfRequerente);
         const rgRequerente = prompt(`Informe o RG de ${nomeRequerente}:`);
         const sspRequerente = prompt("SSP:");
