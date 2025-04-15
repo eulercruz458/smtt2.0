@@ -105,6 +105,12 @@ function formatarTelefone(telefone) {
     return telLimpo.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
 }
 
+function formatarCPF(cpf) {
+    const cpfLimpo = cpf.replace(/\D/g, '');
+    return cpfLimpo.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+}
+
+
 const textLines = [
     'ESTADO DE SERGIPE',
     'PREFEITURA MUNICIPAL DE ARACAJU',
@@ -243,7 +249,9 @@ gerarPdf.addEventListener('click', async () => {
     const { cpfResponsavel, nomeOutroResponsavel} = verificarIdade(nomeMae);
   
   
-  
+    const cpfFormatado = formatarCPF(cpf);
+    const cpfFormatadoResponsavel= formatarCPF(cpfResponsavel);
+
     const telefone1Formatado = formatarTelefone(telefone1);
     const telefone2Formatado = formatarTelefone(telefone2);
 
@@ -276,7 +284,7 @@ gerarPdf.addEventListener('click', async () => {
  doc.text(`${dataNascimentoFormatada}`, 51, 60);
  doc.text(`${rg}`, 51, 70);
  doc.text(`${ssp}`, 130, 71);
- doc.text(`${cpf}`, 155, 70);
+ doc.text(`${cpfFormatado}`, 155, 70);
  doc.text(`${dataHojeFormatada}`, 163, 21);
  doc.text(`${dataAgendamentoFormatada}`, 51, 142.3);
  doc.text(`${horario}`, 75, 142.3);
@@ -309,7 +317,7 @@ gerarPdf.addEventListener('click', async () => {
 
 
  // Salva o PDF
- const nomeArquivo = `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`; // Substitui espaços por sublinhados
+ const nomeArquivo = `${nome.replace(/ /g, '_')}_${cpfFormatado}_${atendente}.pdf`; // Substitui espaços por sublinhados
 
   if (cpfResponsavel) {
      doc.addPage(); // Adiciona uma nova página
@@ -330,8 +338,8 @@ gerarPdf.addEventListener('click', async () => {
     
 
     
-     const textoPrincipal = `Eu, ${nomeMae}, inscrito(a) no CPF sob o nº ${cpfResponsavel}, responsável pelo(a) menor ${nome}, inscrito(a) no CPF sob o nº ${cpf}, faço a opção pela utilização da catraca, visando à maior disponibilidade de assentos no transporte coletivo. A partir deste momento, fico ciente da necessidade do RECONHECIMENTO FACIAL DO BENEFICIÁRIO, previamente cadastrado no sistema`
-     const textoResponsavel = `Eu, ${nomeOutroResponsavel}, inscrito(a) no CPF sob o nº ${cpfResponsavel}, responsável pelo(a) menor ${nome}, inscrito(a) no CPF sob o nº ${cpf}, faço a opção pela utilização da catraca, visando à maior disponibilidade de assentos no transporte coletivo. A partir deste momento, fico ciente da necessidade do RECONHECIMENTO FACIAL DO BENEFICIÁRIO, previamente cadastrado no sistema`
+     const textoPrincipal = `Eu, ${nomeMae}, inscrito(a) no CPF sob o nº ${cpfFormatadoResponsavel}, responsável pelo(a) menor ${nome}, inscrito(a) no CPF sob o nº ${cpfFormatado}, faço a opção pela utilização da catraca, visando à maior disponibilidade de assentos no transporte coletivo. A partir deste momento, fico ciente da necessidade do RECONHECIMENTO FACIAL DO BENEFICIÁRIO, previamente cadastrado no sistema`
+     const textoResponsavel = `Eu, ${nomeOutroResponsavel}, inscrito(a) no CPF sob o nº ${cpfFormatadoResponsavel}, responsável pelo(a) menor ${nome}, inscrito(a) no CPF sob o nº ${cpfFormatado}, faço a opção pela utilização da catraca, visando à maior disponibilidade de assentos no transporte coletivo. A partir deste momento, fico ciente da necessidade do RECONHECIMENTO FACIAL DO BENEFICIÁRIO, previamente cadastrado no sistema`
      const textoAssinatura = `Aracaju/SE, ${dataHojeFormatadaExtenso}.\n\n________________________________________________\nAssinatura do(a) Responsavel`;
 
      
@@ -378,6 +386,8 @@ credencialEstacionamento.addEventListener('click', async () => {
     const telefone1 = document.getElementById('telefone1').value;
     const dataAgendamento = document.getElementById('dataAgendamento').value;
     const horario = document.getElementById('horario').value;
+
+    const cpfFormatado2 = formatarCPF(cpt);
    
 
 
@@ -392,7 +402,7 @@ credencialEstacionamento.addEventListener('click', async () => {
     doc.setFontSize(12);
 
     // Texto Principal
-    const textoPrincipal = `Eu, ${nome}, portador(a) do RG nº ${rg} SSP ${ssp}, inscrito(a) no CPF sob o nº ${cpf}, residente e domiciliado em ${endereco}, ${numCasa}, ${bairro}, ${cidade}, estado de Sergipe, com telefone nº ${telefone1Formatado}, nascido(a) em ${dataNascimentoFormatada}, solicito à Superintendência Municipal de Transporte e Trânsito de Aracaju, o cadastramento para recebimento de credencial e vaga especial em estacionamentos, por estar enquadrado(a) no que dispõe a resolução do CONTRAN nº 965, de 17 de maio de 2022. Declaro que as informações acima são verdadeiras e estou ciente da forma de utilização da credencial e as consequências do seu uso indevido.`;
+    const textoPrincipal = `Eu, ${nome}, portador(a) do RG nº ${rg} SSP ${ssp}, inscrito(a) no CPF sob o nº ${cpfFormatado2}, residente e domiciliado em ${endereco}, ${numCasa}, ${bairro}, ${cidade}, estado de Sergipe, com telefone nº ${telefone1Formatado}, nascido(a) em ${dataNascimentoFormatada}, solicito à Superintendência Municipal de Transporte e Trânsito de Aracaju, o cadastramento para recebimento de credencial e vaga especial em estacionamentos, por estar enquadrado(a) no que dispõe a resolução do CONTRAN nº 965, de 17 de maio de 2022. Declaro que as informações acima são verdadeiras e estou ciente da forma de utilização da credencial e as consequências do seu uso indevido.`;
 
     const textoAssinatura = `Aracaju/SE, ${dataHojeFormatada}.\n\n________________________________________________\nAssinatura do Requerente`;
 
@@ -510,7 +520,7 @@ let y = rectY + 20; // Ajusta a posição do corpo do texto para começar abaixo
 
     const atendente = document.getElementById("atendenteManual").value;
     // Salva o PDF com o nome personalizado
-    const nomeArquivoCredencial = `${nome.replace(/ /g, '_')}_${cpf}_${atendente}.pdf`;
+    const nomeArquivoCredencial = `${nome.replace(/ /g, '_')}_${cpfFormatado2}_${atendente}.pdf`;
     doc.save(nomeArquivoCredencial);
 });
 
@@ -547,6 +557,7 @@ trocarCinzaRoxo.addEventListener('click', async () => {
     const anoNascimento = new Date(dataNascimento).getFullYear();
     const mesNascimento = new Date(dataNascimento).getMonth();
     const diaNascimento = new Date(dataNascimento).getDate();
+    const cpfFormatado3 = formatarCPF(cpf);
 
     // Calcula a idade
     let idade = hoje.getFullYear() - anoNascimento;
@@ -606,7 +617,7 @@ trocarCinzaRoxo.addEventListener('click', async () => {
     
     if(autorizacao2) {
 
-        const textoPrincipal = `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nome} portador(a) do RG nº ${rg} SSP ${ssp} e inscrito(a) no CPF sob o nº ${cpf}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, solicita a substituição do Cartão Mais Aracaju Gratuidade da COR CINZA de nº ${numeroCartao} para a COR ROXA que NÃO PERMITE o acesso à parte traseira dos ônibus mediante a validação da biometria facial do beneficiário.`
+        const textoPrincipal = `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nome} portador(a) do RG nº ${rg} SSP ${ssp} e inscrito(a) no CPF sob o nº ${cpfFormatado3}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, solicita a substituição do Cartão Mais Aracaju Gratuidade da COR CINZA de nº ${numeroCartao} para a COR ROXA que NÃO PERMITE o acesso à parte traseira dos ônibus mediante a validação da biometria facial do beneficiário.`
 
 
         doc.setFontSize(12);
@@ -620,10 +631,11 @@ trocarCinzaRoxo.addEventListener('click', async () => {
     }else{
         const nomeRequerente = prompt("Informe o nome do requerente:");
         const cpfRequerente = prompt(`Informe o CPF de ${nomeRequerente}:`);
+        const cpfRequerenteFormatado = formatarCPF(cpfRequerente);
         const rgRequerente = prompt(`Informe o RG de ${nomeRequerente}:`);
         const sspRequerente = prompt("SSP:");
 
-        const textoPrincipal1 = `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nomeRequerente} portador(a) do RG nº ${rgRequerente} SSP ${sspRequerente} e inscrito(a) no CPF sob o nº ${cpfRequerente}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, AUTORIZO a substituição do Cartão Mais Aracaju Gratuidade da COR CINZA de nº ${numeroCartao} para a COR ROXA que NÃO PERMITE o acesso à parte traseira dos ônibus mediante a validação da biometria facial do beneficiário.`
+        const textoPrincipal1 = `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nomeRequerente} portador(a) do RG nº ${rgRequerente} SSP ${sspRequerente} e inscrito(a) no CPF sob o nº ${cpfRequerenteFormatado}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, AUTORIZO a substituição do Cartão Mais Aracaju Gratuidade da COR CINZA de nº ${numeroCartao} para a COR ROXA que NÃO PERMITE o acesso à parte traseira dos ônibus mediante a validação da biometria facial do beneficiário.`
 
         doc.setFontSize(12);
         adicionarTextoJustificado(doc, textoPrincipal1, 170, 20, 50);
@@ -674,6 +686,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
     
 
     const numeroCartao = prompt("Informe o número do cartão:");
+    const cpfFomatado4 = formatarCPF(cpf);
 
 
     if (numeroCartao === null || numeroCartao.trim() === "") {
@@ -741,7 +754,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
     doc.text(textoEndereco, 100, 278, { align: 'center' });
 
     if (autorizacao){
-        const textoPrincipal = `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nome} portador(a) do RG nº ${rg} SSP ${ssp} e inscrito(a) no CPF sob o nº ${cpf}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, solicita a substituição do Cartão Mais Aracaju Gratuidade da COR ROXA de nº ${numeroCartao} para a COR CINZA que PERMITE o acesso à parte traseira dos ônibus mediante a validação da biometria facial do beneficiário.`
+        const textoPrincipal = `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nome} portador(a) do RG nº ${rg} SSP ${ssp} e inscrito(a) no CPF sob o nº ${cpfFomatado4}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, solicita a substituição do Cartão Mais Aracaju Gratuidade da COR ROXA de nº ${numeroCartao} para a COR CINZA que PERMITE o acesso à parte traseira dos ônibus mediante a validação da biometria facial do beneficiário.`
 
         doc.setFontSize(12);
         adicionarTextoJustificado(doc, textoPrincipal, 170, 20, 50);
@@ -754,11 +767,12 @@ trocarRoxoCinza.addEventListener('click', async () => {
     else{
         const nomeRequerente = prompt("Informe o nome do requerente:");
         const cpfRequerente = prompt(`Informe o CPF de ${nomeRequerente}:`);
+        const cpfRequerenteFormatado = formatarCPF(cpfRequerente);
         const rgRequerente = prompt(`Informe o RG de ${nomeRequerente}:`);
         const sspRequerente = prompt("SSP:");
 
         const textoPrincipalTEA = 
-        `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nomeRequerente} portador(a) do RG nº ${rgRequerente} SSP ${sspRequerente} e inscrito(a) no CPF sob o nº ${cpfRequerente}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, AUTORIZO a substituição do Cartão Mais Aracaju Gratuidade da COR ROXA de nº ${numeroCartao} para a COR CINZA que PERMITE o acesso à parte traseira do ônibus mediante a validação da biometria facial do beneficiário.`
+        `O Núcleo de Atendimento da Perícia Médica com base nas Leis n° 1.723/91 e n° 1.325/1987 comunica que o(a) requerente ${nomeRequerente} portador(a) do RG nº ${rgRequerenteFormatado} SSP ${sspRequerente} e inscrito(a) no CPF sob o nº ${cpfRequerente}, residente e domiciliado na ${endereco}, ${numCasa}, ${bairro}, ${cidade}, telefone nº ${telefone1Formatado}, AUTORIZO a substituição do Cartão Mais Aracaju Gratuidade da COR ROXA de nº ${numeroCartao} para a COR CINZA que PERMITE o acesso à parte traseira do ônibus mediante a validação da biometria facial do beneficiário.`
 
         doc.setFontSize(12);
         adicionarTextoJustificado(doc, textoPrincipalTEA, 170, 20, 50);
