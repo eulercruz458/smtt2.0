@@ -104,11 +104,13 @@ function formatarTelefone(telefone) {
     const telLimpo = telefone.replace(/\D/g, '');
     return telLimpo.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
 }
-
 function formatarCPF(cpf) {
-    const cpfLimpo = cpf.replace(/\D/g, '');
+    if (!cpf) return '';
+    const cpfLimpo = cpf.toString().replace(/\D/g, '');
+    if (cpfLimpo.length !== 11) return cpf; // retorna original se não tiver 11 dígitos
     return cpfLimpo.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
 }
+
 
 
 const textLines = [
