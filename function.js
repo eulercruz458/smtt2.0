@@ -782,7 +782,7 @@ trocarRoxoCinza.addEventListener('click', async () => {
         doc.setFontSize(12);
         adicionarTextoJustificado(doc, textoPrincipalTEA, 170, 20, 50);
 
-        doc.text(`Para preenchimento da SMTT:\n\nNome do beneficiário: ${nome}\nCPF: ${cpfFomatado5}`, 15, 185);
+        doc.text(`Para preenchimento da SMTT:\n\nNome do beneficiário: ${nome}\nCPF: ${cpfFormatado5}`, 15, 185);
 
         doc.text(textoAssinaturaCoordenador, 100, 235, { align: 'center' });
         doc.setFontSize(10);
