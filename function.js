@@ -127,6 +127,7 @@ document.getElementById("bairro").addEventListener("change", function() {
 });
 
 
+
 // Funções de formatação
 function formatarData(data) {
     const partes = data.split('-');
