@@ -156,7 +156,7 @@ document.getElementById("bairro").addEventListener("change", function () {
       b => b.toLowerCase() === valorDigitado
     );
     if (bairroCorreto) {
-      input.value = bairroCorreto; // Corrige para a capitalização correta
+      input.value = bairroCorreto;
       document.getElementById("cidade").value = cidade;
       document.getElementById("cidade").readOnly = true;
       encontrado = true;
