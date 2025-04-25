@@ -84,6 +84,49 @@ function obterDataAtual() {
     return `${ano}-${mes}-${dia}`;
 }
 
+// Lista de bairros de Aracaju
+const bairrosDeAracaju = [
+  "Lamarão", "Porto Dantas", "Soledade", "Dom Luciano", "Bugio", 
+  "Olaria / Centenário", "Japãozinho", "Cidade Nova", "Industrial", 
+  "Palestina", "Aeroporto / Santos Dumont", "Santo Antônio", 
+  "José Conrado de Araújo", "18 do Forte", "Getúlio Vargas", "Capucho", 
+  "Siqueira Campos", "Cirurgia", "Centro", "Novo Paraíso", "Suíssa", 
+  "São José", "Pereira Lobo", "América", "13 de Julho", "Salgado Filho", 
+  "Ponto Novo", "Grageru", "Jabotiana", "Jardins", "Inácio Barbosa", 
+  "Coroa do Meio", "São Conrado", "Farolândia", "Atalaia", "17 de Março", 
+  "Aruana", "Santa Maria", "Robalo", "São José dos Náufragos", "Areia Branca", 
+  "Matapuã", "Gameleira", "Mosqueiro"
+];
+
+// Função para filtrar bairros conforme o usuário digita
+function filtrarBairros() {
+  const inputBairro = document.getElementById("bairro").value.toLowerCase();
+  const sugestoesBairros = document.getElementById("sugestoesBairros");
+
+  // Limpa as sugestões anteriores
+  sugestoesBairros.innerHTML = '';
+
+  // Filtra os bairros que correspondem ao texto digitado
+  bairrosDeAracaju.forEach(bairro => {
+    if (bairro.toLowerCase().includes(inputBairro)) {
+      const option = document.createElement("option");
+      option.value = bairro;  // Adiciona o nome do bairro
+      sugestoesBairros.appendChild(option);
+    }
+  });
+}
+
+// Função para preencher automaticamente a cidade após selecionar um bairro
+document.getElementById("bairro").addEventListener("change", function() {
+  const bairroSelecionado = this.value;
+
+  // Verifica se o bairro selecionado está na lista
+  if (bairrosDeAracaju.includes(bairroSelecionado)) {
+    document.getElementById("cidade").value = "Aracaju";  // Preenche automaticamente com "Aracaju"
+  }
+});
+
+
 // Funções de formatação
 function formatarData(data) {
     const partes = data.split('-');
