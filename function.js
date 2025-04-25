@@ -86,8 +86,8 @@ function obterDataAtual() {
 
 const bairrosDeAracaju = [
   "Lamarão", "Porto Dantas", "Soledade", "Dom Luciano", "Bugio", 
-  "Olaria / Centenário", "Japãozinho", "Cidade Nova", "Industrial", 
-  "Palestina", "Aeroporto / Santos Dumont", "Santo Antônio", 
+  "Olaria", "Jardim Centenário", "Japãozinho", "Cidade Nova", "Industrial", 
+  "Palestina", "Aeroporto", "Santos Dumont", "Santo Antônio", 
   "José Conrado de Araújo", "18 do Forte", "Getúlio Vargas", "Capucho", 
   "Siqueira Campos", "Cirurgia", "Centro", "Novo Paraíso", "Suíssa", 
   "São José", "Pereira Lobo", "América", "13 de Julho", "Salgado Filho", 
