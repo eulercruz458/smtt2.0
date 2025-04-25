@@ -212,11 +212,8 @@
       </div>
 
       <div class="input-container">
-        <label for="bairro">Bairro:</label>
-        <input type="text" id="bairro" oninput="filtrarBairros()" placeholder="Digite o nome do bairro" list="sugestoesBairros" required>
-      <datalist id="sugestoesBairros">
-        <!-- As opções de bairros serão preenchidas aqui dinamicamente -->
-      </datalist>
+        <input type="text" id="bairro" placeholder="Digite o bairro" oninput="filtrarBairros()" list="sugestoesBairros">
+        <datalist id="sugestoesBairros"></datalist>
       </div>
 
       <div class="input-container">
