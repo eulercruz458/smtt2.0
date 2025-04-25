@@ -202,10 +202,17 @@
         <input type="text" id="bairro" required />
       </div>
 
-      <div class="input-container">
-        <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" required />
-      </div>
+     <div class="input-container">
+      <label for="cidade">Cidade:</label>
+        <select id="cidade" required>
+            <option value="" disabled selected>Selecione uma cidade</option>
+            <option value="Aracaju">Aracaju</option>
+            <option value="Socorro">Socorro</option>
+            <option value="São Cristóvão">São Cristóvão</option>
+            <option value="Barra dos Coqueiros">Barra dos Coqueiros</option>
+      </select>
+     </div>
+
 
       <div class="input-container">
         <label for="telefone1">Telefone (1):</label>
