@@ -84,7 +84,6 @@ function obterDataAtual() {
     return `${ano}-${mes}-${dia}`;
 }
 
-// Lista de bairros de Aracaju
 const bairrosDeAracaju = [
   "Lamarão", "Porto Dantas", "Soledade", "Dom Luciano", "Bugio", 
   "Olaria / Centenário", "Japãozinho", "Cidade Nova", "Industrial", 
@@ -95,36 +94,43 @@ const bairrosDeAracaju = [
   "Ponto Novo", "Grageru", "Jabotiana", "Jardins", "Inácio Barbosa", 
   "Coroa do Meio", "São Conrado", "Farolândia", "Atalaia", "17 de Março", 
   "Aruana", "Santa Maria", "Robalo", "São José dos Náufragos", "Areia Branca", 
-  "Matapuã", "Gameleira", "Mosqueiro"
+  "Matapuã", "Gameleira", "Mosqueiro","Luzia"
 ];
 
-// Função para filtrar bairros conforme o usuário digita
 function filtrarBairros() {
-  const inputBairro = document.getElementById("bairro").value.toLowerCase();
-  const sugestoesBairros = document.getElementById("sugestoesBairros");
+  const input = document.getElementById("bairro");
+  const sugestoes = document.getElementById("sugestoesBairros");
+  const textoDigitado = input.value.toLowerCase();
 
-  // Limpa as sugestões anteriores
-  sugestoesBairros.innerHTML = '';
+  sugestoes.innerHTML = '';
 
-  // Filtra os bairros que correspondem ao texto digitado
   bairrosDeAracaju.forEach(bairro => {
-    if (bairro.toLowerCase().includes(inputBairro)) {
+    if (bairro.toLowerCase().includes(textoDigitado)) {
       const option = document.createElement("option");
-      option.value = bairro;  // Adiciona o nome do bairro
-      sugestoesBairros.appendChild(option);
+      option.value = bairro;
+      sugestoes.appendChild(option);
     }
   });
 }
 
-// Função para preencher automaticamente a cidade após selecionar um bairro
-document.getElementById("bairro").addEventListener("change", function() {
-  const bairroSelecionado = this.value;
+document.getElementById("bairro").addEventListener("change", function () {
+  const input = this;
+  const valorDigitado = input.value.toLowerCase();
 
-  // Verifica se o bairro selecionado está na lista
-  if (bairrosDeAracaju.includes(bairroSelecionado)) {
-    document.getElementById("cidade").value = "Aracaju";  // Preenche automaticamente com "Aracaju"
+  const bairroCorreto = bairrosDeAracaju.find(
+    bairro => bairro.toLowerCase() === valorDigitado
+  );
+
+  if (bairroCorreto) {
+    input.value = bairroCorreto;
+    document.getElementById("cidade").value = "Aracaju";
+    document.getElementById("cidade").readOnly = true; // trava o campo
+  } else {
+    document.getElementById("cidade").value = "";
+    document.getElementById("cidade").readOnly = false; // deixa o campo livre pra digitar
   }
 });
+
 
 
 
