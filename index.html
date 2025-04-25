@@ -213,17 +213,16 @@
 
       <div class="input-container">
         <label for="bairro">Bairro:</label>
-        <input type="text" id="bairro" oninput="filtrarBairros()" placeholder="Digite o nome do bairro" required>
-        <datalist id="sugestoesBairros">
-      <!-- As opções de bairros serão preenchidas aqui dinamicamente -->
-        </datalist>
+        <input type="text" id="bairro" oninput="filtrarBairros()" placeholder="Digite o nome do bairro" list="sugestoesBairros" required>
+      <datalist id="sugestoesBairros">
+        <!-- As opções de bairros serão preenchidas aqui dinamicamente -->
+      </datalist>
       </div>
 
       <div class="input-container">
         <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" placeholder="A cidade será preenchida automaticamente" readonly>
-      </div>
-
+        <input type="text" id="cidade" placeholder="Digite a cidade" readonly>
+    </div>
 
 
       <div class="input-container">
