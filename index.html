@@ -213,14 +213,15 @@
 
       <div class="input-container">
         <label for="bairro">Bairro:</label>
-        <input type="text" id="bairro" placeholder="Digite o bairro" oninput="filtrarBairros()" list="sugestoesBairros">
+        <input type="text" id="bairro" placeholder="Digite o bairro" oninput="filtrarBairros()" list="sugestoesBairros" onchange="verificarCidade()">
         <datalist id="sugestoesBairros"></datalist>
-      </div>
+        </div>
 
       <div class="input-container">
-        <label for="cidade">Cidade:</label>
-        <input type="text" id="cidade" placeholder="Nome da Cidade">
-    </div>
+          <label for="cidade">Cidade:</label>
+          <input type="text" id="cidade" placeholder="Cidade será preenchida automaticamente">
+      </div>
+
 
 
       <div class="input-container">
