@@ -104,29 +104,29 @@ const bairrosPorCidade = {
     "Pai André", "Palestina de Dentro", "Palestina de Fora", "Parque dos Faróis",
     "Piabeta", "Porto Grande", "Santa Cecília", "Santa Inês", "Santo Inácio",
     "São Brás", "Sobrado", "Taboca", "Taiçoca de Dentro", "Taiçoca de Fora",
-    // Distritos
     "Bita", "Calumbi", "Camaratuba", "Distrito Industrial", "Lavandeira",
     "Nossa Senhora do Socorro", "Oiteiro", "Palestina", "Quissamã"
-  ]
-    "Barra dos Coqueiros": [
+  ],
+  "Barra dos Coqueiros": [
     "Centro", "Atalaia Nova", "Antônio Pedro", "Espaço Tropical", "Marivan",
     "Moisés Gomes", "Olimar", "Praia Costa Canal", "Touro", "Jatobá", "Capuã",
     "Olhos d'Água", "Prisco Viana", "Recanto Andorinhas", "Serigy", "Beira Rio",
     "Hildete Falcão Batista", "Costa Paradiso", "Brisas da Atalaia",
     "Paraíso da Barra", "Luar da Barra", "São Benedito", "Bairro Baixo",
     "Caminho da Praia", "Suzana Azevedo", "Alphaville"
-  ] 
-     "São Cristóvão": [
-        "Aldeia", "Alto da Colina", "Alto da Divineia", "Alto de Itabaiana",
-        "Alto Santo Antônio", "Aningas", "Arame I", "Arame II",
-        "Assentamento Nova Canaã", "Barreiro", "Caípe Velho", "Cajueiro", "Cardoso",
-        "Cabrita", "Camboatá", "Camboatá 2", "Centro", "Colônia Miranda", "Rosa Elze",
-        "Cristo Redentor", "Estiva", "Feijão", "José Batalha de Góis", "Lauro Rocha",
-        "Madalena de Góis", "Marcelo Déda", "Mosqueiro", "Parque Santa Rita",
-        "Pedreiras", "Pintos", "Quissamã", "Recanto dos Passarinhos", "Rita Cacete",
-        "Terra Dura", "Tinharé", "Umbaubá", "Vale do Amanhecer", "Várzea Grande"
+  ],
+  "São Cristóvão": [
+    "Aldeia", "Alto da Colina", "Alto da Divineia", "Alto de Itabaiana",
+    "Alto Santo Antônio", "Aningas", "Arame I", "Arame II",
+    "Assentamento Nova Canaã", "Barreiro", "Caípe Velho", "Cajueiro", "Cardoso",
+    "Cabrita", "Camboatá", "Camboatá 2", "Centro", "Colônia Miranda", "Rosa Elze",
+    "Cristo Redentor", "Estiva", "Feijão", "José Batalha de Góis", "Lauro Rocha",
+    "Madalena de Góis", "Marcelo Déda", "Mosqueiro", "Parque Santa Rita",
+    "Pedreiras", "Pintos", "Quissamã", "Recanto dos Passarinhos", "Rita Cacete",
+    "Terra Dura", "Tinharé", "Umbaubá", "Vale do Amanhecer", "Várzea Grande"
   ]
 };
+
 
 function filtrarBairros() {
   const input = document.getElementById("bairro");
