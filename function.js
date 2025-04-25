@@ -84,18 +84,49 @@ function obterDataAtual() {
     return `${ano}-${mes}-${dia}`;
 }
 
-const bairrosDeAracaju = [
-  "Lamarão", "Porto Dantas", "Soledade", "Dom Luciano", "Bugio", 
-  "Olaria", "Jardim Centenário", "Japãozinho", "Cidade Nova", "Industrial", 
-  "Palestina", "Aeroporto", "Santos Dumont", "Santo Antônio", 
-  "José Conrado de Araújo", "18 do Forte", "Getúlio Vargas", "Capucho", 
-  "Siqueira Campos", "Cirurgia", "Centro", "Novo Paraíso", "Suíssa", 
-  "São José", "Pereira Lobo", "América", "13 de Julho", "Salgado Filho", 
-  "Ponto Novo", "Grageru", "Jabotiana", "Jardins", "Inácio Barbosa", 
-  "Coroa do Meio", "São Conrado", "Farolândia", "Atalaia", "17 de Março", 
-  "Aruana", "Santa Maria", "Robalo", "São José dos Náufragos", "Areia Branca", 
-  "Matapuã", "Gameleira", "Mosqueiro","Luzia"
-];
+const bairrosPorCidade = {
+  "Aracaju": [
+    "Lamarão", "Porto Dantas", "Soledade", "Dom Luciano", "Bugio",
+    "Olaria", "Centenário", "Japãozinho", "Cidade Nova", "Industrial",
+    "Palestina", "Aeroporto", "Santos Dumont", "Santo Antônio",
+    "José Conrado de Araújo", "18 do Forte", "Getúlio Vargas", "Capucho",
+    "Siqueira Campos", "Cirurgia", "Centro", "Novo Paraíso", "Suíssa",
+    "São José", "Pereira Lobo", "América", "13 de Julho", "Salgado Filho",
+    "Ponto Novo", "Grageru", "Jabotiana", "Jardins", "Inácio Barbosa",
+    "Coroa do Meio", "São Conrado", "Farolândia", "Atalaia", "17 de Março",
+    "Aruana", "Santa Maria", "Robalo", "São José dos Náufragos", "Areia Branca",
+    "Matapuã", "Gameleira", "Mosqueiro", "Luzia"
+  ],
+  "Socorro": [
+    "Albano Franco", "Boa Viagem", "Castelo", "Centro Histórico", "Fernando Collor",
+    "Guajará", "Itacanema", "Jardim", "João Alves", "Mangabeira",
+    "Marcos Freire I", "Marcos Freire II", "Marcos Freire III", "Novo Horizonte",
+    "Pai André", "Palestina de Dentro", "Palestina de Fora", "Parque dos Faróis",
+    "Piabeta", "Porto Grande", "Santa Cecília", "Santa Inês", "Santo Inácio",
+    "São Brás", "Sobrado", "Taboca", "Taiçoca de Dentro", "Taiçoca de Fora",
+    // Distritos
+    "Bita", "Calumbi", "Camaratuba", "Distrito Industrial", "Lavandeira",
+    "Nossa Senhora do Socorro", "Oiteiro", "Palestina", "Quissamã"
+  ]
+    "Barra dos Coqueiros": [
+    "Centro", "Atalaia Nova", "Antônio Pedro", "Espaço Tropical", "Marivan",
+    "Moisés Gomes", "Olimar", "Praia Costa Canal", "Touro", "Jatobá", "Capuã",
+    "Olhos d'Água", "Prisco Viana", "Recanto Andorinhas", "Serigy", "Beira Rio",
+    "Hildete Falcão Batista", "Costa Paradiso", "Brisas da Atalaia",
+    "Paraíso da Barra", "Luar da Barra", "São Benedito", "Bairro Baixo",
+    "Caminho da Praia", "Suzana Azevedo", "Alphaville"
+  ] 
+     "São Cristóvão": [
+        "Aldeia", "Alto da Colina", "Alto da Divineia", "Alto de Itabaiana",
+        "Alto Santo Antônio", "Aningas", "Arame I", "Arame II",
+        "Assentamento Nova Canaã", "Barreiro", "Caípe Velho", "Cajueiro", "Cardoso",
+        "Cabrita", "Camboatá", "Camboatá 2", "Centro", "Colônia Miranda", "Rosa Elze",
+        "Cristo Redentor", "Estiva", "Feijão", "José Batalha de Góis", "Lauro Rocha",
+        "Madalena de Góis", "Marcelo Déda", "Mosqueiro", "Parque Santa Rita",
+        "Pedreiras", "Pintos", "Quissamã", "Recanto dos Passarinhos", "Rita Cacete",
+        "Terra Dura", "Tinharé", "Umbaubá", "Vale do Amanhecer", "Várzea Grande"
+  ]
+};
 
 function filtrarBairros() {
   const input = document.getElementById("bairro");
@@ -104,30 +135,38 @@ function filtrarBairros() {
 
   sugestoes.innerHTML = '';
 
-  bairrosDeAracaju.forEach(bairro => {
-    if (bairro.toLowerCase().includes(textoDigitado)) {
-      const option = document.createElement("option");
-      option.value = bairro;
-      sugestoes.appendChild(option);
-    }
-  });
+  for (const cidade in bairrosPorCidade) {
+    bairrosPorCidade[cidade].forEach(bairro => {
+      if (bairro.toLowerCase().includes(textoDigitado)) {
+        const option = document.createElement("option");
+        option.value = bairro;
+        sugestoes.appendChild(option);
+      }
+    });
+  }
 }
 
 document.getElementById("bairro").addEventListener("change", function () {
   const input = this;
   const valorDigitado = input.value.toLowerCase();
+  let encontrado = false;
 
-  const bairroCorreto = bairrosDeAracaju.find(
-    bairro => bairro.toLowerCase() === valorDigitado
-  );
+  for (const cidade in bairrosPorCidade) {
+    const bairroCorreto = bairrosPorCidade[cidade].find(
+      b => b.toLowerCase() === valorDigitado
+    );
+    if (bairroCorreto) {
+      input.value = bairroCorreto; // Corrige para a capitalização correta
+      document.getElementById("cidade").value = cidade;
+      document.getElementById("cidade").readOnly = true;
+      encontrado = true;
+      break;
+    }
+  }
 
-  if (bairroCorreto) {
-    input.value = bairroCorreto;
-    document.getElementById("cidade").value = "Aracaju";
-    document.getElementById("cidade").readOnly = true; // trava o campo
-  } else {
+  if (!encontrado) {
     document.getElementById("cidade").value = "";
-    document.getElementById("cidade").readOnly = false; // deixa o campo livre pra digitar
+    document.getElementById("cidade").readOnly = false;
   }
 });
 
