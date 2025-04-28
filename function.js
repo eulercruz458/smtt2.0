@@ -85,45 +85,45 @@ function obterDataAtual() {
 }
 
 const bairrosPorCidade = {
-  "Aracaju": [
-    "Lamarão", "Porto Dantas", "Soledade", "Dom Luciano", "Bugio",
-    "Olaria", "Centenário", "Japãozinho", "Cidade Nova", "Industrial",
-    "Palestina", "Aeroporto", "Santos Dumont", "Santo Antônio",
-    "José Conrado de Araújo", "18 do Forte", "Getúlio Vargas", "Capucho",
-    "Siqueira Campos", "Cirurgia", "Centro", "Novo Paraíso", "Suíssa",
-    "São José", "Pereira Lobo", "América", "13 de Julho", "Salgado Filho",
-    "Ponto Novo", "Grageru", "Jabotiana", "Jardins", "Inácio Barbosa",
-    "Coroa do Meio", "São Conrado", "Farolândia", "Atalaia", "17 de Março",
-    "Aruana", "Santa Maria", "Robalo", "São José dos Náufragos", "Areia Branca",
-    "Matapuã", "Gameleira", "Mosqueiro", "Luzia"
+  "ARACAJU": [
+    "LAMARÃO", "PORTO DANTAS", "SOLEDADE", "DOM LUCIANO", "BUGIO",
+    "OLARIA", "CENTENÁRIO", "JAPÃOZINHO", "CIDADE NOVA", "INDUSTRIAL",
+    "PALESTINA", "AEROPORTO", "SANTOS DUMONT", "SANTO ANTÔNIO",
+    "JOSÉ CONRADO DE ARAÚJO", "18 DO FORTE", "GETÚLIO VARGAS", "CAPUCHO",
+    "SIQUEIRA CAMPOS", "CIRURGIA", "CENTRO", "NOVO PARAÍSO", "SUÍSSA",
+    "SÃO JOSÉ", "PEREIRA LOBO", "AMÉRICA", "13 DE JULHO", "SALGADO FILHO",
+    "PONTO NOVO", "GRAGERU", "JABOTIANA", "JARDINS", "INÁCIO BARBOSA",
+    "COROA DO MEIO", "SÃO CONRADO", "FAROLÂNDIA", "ATALAIA", "17 DE MARÇO",
+    "ARUANA", "SANTA MARIA", "ROBALO", "SÃO JOSÉ DOS NÁUFRAGOS", "AREIA BRANCA",
+    "MATAPUÃ", "GAMELEIRA", "MOSQUEIRO", "LUZIA"
   ],
-  "Socorro": [
-    "Albano Franco", "Boa Viagem", "Castelo", "Centro Histórico", "Fernando Collor",
-    "Guajará", "Itacanema", "Jardim", "João Alves", "Mangabeira",
-    "Marcos Freire I", "Marcos Freire II", "Marcos Freire III", "Novo Horizonte",
-    "Pai André", "Palestina de Dentro", "Palestina de Fora", "Parque dos Faróis",
-    "Piabeta", "Porto Grande", "Santa Cecília", "Santa Inês", "Santo Inácio",
-    "São Brás", "Sobrado", "Taboca", "Taiçoca de Dentro", "Taiçoca de Fora",
-    "Bita", "Calumbi", "Camaratuba", "Distrito Industrial", "Lavandeira",
-    "Nossa Senhora do Socorro", "Oiteiro", "Palestina", "Quissamã"
+  "SOCORRO": [
+    "ALBANO FRANCO", "BOA VIAGEM", "CASTELO", "CENTRO HISTÓRICO", "FERNANDO COLLOR",
+    "GUAJARÁ", "ITACANEMA", "JARDIM", "JOÃO ALVES", "MANGABEIRA",
+    "MARCOS FREIRE I", "MARCOS FREIRE II", "MARCOS FREIRE III", "NOVO HORIZONTE",
+    "PAI ANDRÉ", "PALESTINA DE DENTRO", "PALESTINA DE FORA", "PARQUE DOS FARÓIS",
+    "PIABETA", "PORTO GRANDE", "SANTA CECÍLIA", "SANTA INÊS", "SANTO INÁCIO",
+    "SÃO BRÁS", "SOBRADO", "TABOCA", "TAIÇOCA DE DENTRO", "TAIÇOCA DE FORA",
+    "BITA", "CALUMBI", "CAMARATUBA", "DISTRITO INDUSTRIAL", "LAVANDEIRA",
+    "NOSSA SENHORA DO SOCORRO", "OITEIRO", "PALESTINA", "QUISSAMÃ"
   ],
-  "Barra dos Coqueiros": [
-    "Centro", "Atalaia Nova", "Antônio Pedro", "Espaço Tropical", "Marivan",
-    "Moisés Gomes", "Olimar", "Praia Costa Canal", "Touro", "Jatobá", "Capuã",
-    "Olhos d'Água", "Prisco Viana", "Recanto Andorinhas", "Serigy", "Beira Rio",
-    "Hildete Falcão Batista", "Costa Paradiso", "Brisas da Atalaia",
-    "Paraíso da Barra", "Luar da Barra", "São Benedito", "Bairro Baixo",
-    "Caminho da Praia", "Suzana Azevedo", "Alphaville"
+  "BARRA DOS COQUEIROS": [
+    "CENTRO", "ATALAIA NOVA", "ANTÔNIO PEDRO", "ESPAÇO TROPICAL", "MARIVAN",
+    "MOISÉS GOMES", "OLIMAR", "PRAIA COSTA CANAL", "TOURO", "JATOBÁ", "CAPUÃ",
+    "OLHOS D'ÁGUA", "PRISCO VIANA", "RECANTO ANDORINHAS", "SERIGY", "BEIRA RIO",
+    "HILDETE FALCÃO BATISTA", "COSTA PARADISO", "BRISAS DA ATALAIA",
+    "PARAÍSO DA BARRA", "LUAR DA BARRA", "SÃO BENEDITO", "BAIRRO BAIXO",
+    "CAMINHO DA PRAIA", "SUZANA AZEVEDO", "ALPHAVILLE"
   ],
-  "São Cristóvão": [
-    "Aldeia", "Alto da Colina", "Alto da Divineia", "Alto de Itabaiana",
-    "Alto Santo Antônio", "Aningas", "Arame I", "Arame II",
-    "Assentamento Nova Canaã", "Barreiro", "Caípe Velho", "Cajueiro", "Cardoso",
-    "Cabrita", "Camboatá", "Camboatá 2", "Centro", "Colônia Miranda", "Rosa Elze",
-    "Cristo Redentor", "Estiva", "Feijão", "José Batalha de Góis", "Lauro Rocha",
-    "Madalena de Góis", "Marcelo Déda", "Mosqueiro", "Parque Santa Rita",
-    "Pedreiras", "Pintos", "Quissamã", "Recanto dos Passarinhos", "Rita Cacete",
-    "Terra Dura", "Tinharé", "Umbaubá", "Vale do Amanhecer", "Várzea Grande"
+  "SÃO CRISTÓVÃO": [
+    "ALDEIA", "ALTO DA COLINA", "ALTO DA DIVINEIA", "ALTO DE ITABAIANA",
+    "ALTO SANTO ANTÔNIO", "ANINGAS", "ARAME I", "ARAME II",
+    "ASSENTAMENTO NOVA CANAÃ", "BARREIRO", "CAÍPE VELHO", "CAJUEIRO", "CARDOSO",
+    "CABRITA", "CAMBOATÁ", "CAMBOATÁ 2", "CENTRO", "COLÔNIA MIRANDA", "ROSA ELZE",
+    "CRISTO REDENTOR", "ESTIVA", "FEIJÃO", "JOSÉ BATALHA DE GÓIS", "LAURO ROCHA",
+    "MADALENA DE GÓIS", "MARCELO DÉDA", "MOSQUEIRO", "PARQUE SANTA RITA",
+    "PEDREIRAS", "PINTOS", "QUISSAMÃ", "RECANTO DOS PASSARINHOS", "RITA CACETE",
+    "TERRA DURA", "TINHARÉ", "UMBAUBÁ", "VALE DO AMANHECER", "VÁRZEA GRANDE"
   ]
 };
 
