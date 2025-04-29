@@ -1,8 +1,6 @@
 const gerarPdf = document.getElementById('gerarPdf');
 const trocarCinzaRoxo = document.getElementById('trocarCinzaRoxo');
 
-// function.js corrigido com todos os trechos combinados e otimizados
-
 document.addEventListener("DOMContentLoaded", function () {
     
 
@@ -18,7 +16,7 @@ if (limparButton) {
         input.checked = false;
       } else if (
         input.id !== "dataHoje" &&
-        input.id !== "atendenteManual" // <-- NÃO apagar o atendente
+        input.id !== "atendenteManual" 
       ) {
         input.value = "";
       }
@@ -171,8 +169,6 @@ document.getElementById("bairro").addEventListener("change", function () {
 });
 
 
-
-
 // Funções de formatação
 function formatarData(data) {
     const partes = data.split('-');
@@ -200,8 +196,6 @@ function formatarCPF(cpf) {
     if (cpfLimpo.length !== 11) return cpf; // retorna original se não tiver 11 dígitos
     return cpfLimpo.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
 }
-
-
 
 const textLines = [
     'ESTADO DE SERGIPE',
@@ -313,7 +307,8 @@ document.getElementById('dataHoje').value = obterDataAtual();
 
 
 gerarPdf.addEventListener('click', async () => {
-    const { jsPDF } = window.jspdf; // Acessa jsPDF do objeto global
+    const { jsPDF } = window.jspdf; 
+    // Acessa jsPDF do objeto global
     // Captura todos os valores do formulário
     
     const nome = document.getElementById('nome').value;
