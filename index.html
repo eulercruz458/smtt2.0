@@ -299,36 +299,81 @@
     "EDUARDO":"1981"
   };
  
-window.onload = function () {
-  // Verifica se o atendente está salvo
-  const usuarioSalvo = localStorage.getItem("atendente");
-  if (usuarioSalvo) {
-    // Simula login automático
-    document.getElementById("loginSection").style.display = "none";
-    document.getElementById("formularioSection").style.display = "block";
-    document.getElementById("nomeAtendenteSpan").textContent = usuarioSalvo;
-    document.getElementById("atendenteManual").value = usuarioSalvo;
-    window.nomeAtendente = usuarioSalvo;
-  }
+  window.onload = function() {
+      // Verifica se o atendente está salvo
+      const usuarioSalvo = localStorage.getItem("atendente");
+      if (usuarioSalvo && document.getElementById("loginSection")) {
+        // Simula login automático
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("formularioSection").style.display = "block";
+        document.getElementById("nomeAtendenteSpan").textContent = usuarioSalvo;
+        document.getElementById("atendenteManual").value = usuarioSalvo;
+        window.nomeAtendente = usuarioSalvo;
+      }
 
-  // Preenche as informações de data e hora agendada
-  const dataAgendada = localStorage.getItem('dataPericia');
-  const horaAgendada = localStorage.getItem('horaPericia');
+      // Preenche as informações de data e hora agendada
+      preencherCamposAgendamento();
+    };
 
-  if (dataAgendada && horaAgendada) {
-    // Preencher os campos com a data e hora agendadas
-    document.querySelectorAll(".data-vaga").forEach(el => {
-      el.innerText = `${dataAgendada} às ${horaAgendada}`;
-    });
+    // Função para preencher os campos de data e hora
+    function preencherCamposAgendamento() {
+      const dataAgendada = localStorage.getItem('dataPericia');
+      const horaAgendada = localStorage.getItem('horaPericia');
 
-    // Caso haja a necessidade de desabilitar botões, exemplo:
-    document.querySelectorAll("button").forEach(button => {
-      button.disabled = true;
-      button.classList.add("opacity-50");
-    });
-  }
-};
+      if (dataAgendada && horaAgendada) {
+        // Preenche os inputs com a data e hora
+        const campoDataAgendada = document.getElementById("dataAgendada");
+        const campoHoraAgendada = document.getElementById("horaAgendada");
 
+        if (campoDataAgendada && dataAgendada) {
+          campoDataAgendada.value = dataAgendada;
+          console.log("Campo de data preenchido:", dataAgendada);
+        }
+
+        if (campoHoraAgendada && horaAgendada) {
+          campoHoraAgendada.value = horaAgendada;
+          console.log("Campo de hora preenchido:", horaAgendada);
+        }
+
+        // Adiciona a data e hora agendada nos elementos de data e hora
+        const dataElements = document.querySelectorAll(".data-vaga");
+        if (dataElements.length > 0) {
+          dataElements.forEach(el => {
+            el.innerText = `${dataAgendada} às ${horaAgendada}`;
+          });
+
+          // Desabilita os botões de vagas
+          document.querySelectorAll("button").forEach(button => {
+            button.disabled = true;
+            button.classList.add("opacity-50");
+          });
+        }
+      }
+    }
+
+    /// Função para salvar o agendamento de cada requerente
+    function salvarAgendamento() {
+      // Obtém os valores dos campos de data e hora
+      const novaData = document.getElementById("dataAgendada").value;
+      const novaHora = document.getElementById("horaAgendada").value;
+
+      // Verifica se os campos de data e hora não estão vazios
+      if (!novaData || !novaHora) {
+        alert("Por favor, preencha todos os campos de data e hora.");
+        return;
+      }
+
+      // Salva as informações no localStorage (separado por requerente)
+      const requerente = document.getElementById("atendenteManual").value || "Requerente Desconhecido";
+      const chaveDataHora = `agendamento_${requerente}`;
+
+      // Salva as informações de agendamento no localStorage com a chave personalizada
+      localStorage.setItem(`${chaveDataHora}_data`, novaData);
+      localStorage.setItem(`${chaveDataHora}_hora`, novaHora);
+
+      // Atualiza os campos na tela após salvar
+      preencherCamposAgendamento();
+    }
 
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
