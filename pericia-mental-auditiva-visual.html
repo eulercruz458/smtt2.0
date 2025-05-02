@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Perícia - Mental, Auditivo e Visual</title>
+  <script>
+    const usuarioLogado = "usuario"; // mude para "solange" para acesso administrativo
+    const vagasPreenchidas = {}; // Guarda vagas agendadas
+
+    // Função para agendar a perícia com base nas informações do nome, data, hora, turno e índice
+    function agendarPericia(nome, data, hora, turno, index) {
+      const vagaId = `${turno}-${index}`;
+
+      if (vagasPreenchidas[vagaId]) {
+        alert(`Esta vaga já foi preenchida por ${vagasPreenchidas[vagaId].nome}.`);
+        return;
+      }
+
+      if (!nome || nome === "Desconhecido") {
+        alert("Nome não encontrado. Por favor, registre seu nome antes de agendar.");
+        return;
+      }
+
+      const confirmacao = confirm(`Deseja agendar a perícia de ${nome} para o dia ${data} às ${hora}?`);
+      if (confirmacao) {
+        vagasPreenchidas[vagaId] = { nome, data, hora };
+
+        const botao = document.getElementById(`btn-${vagaId}`);
+        botao.classList.remove("bg-green-500", "bg-blue-500", "hover:bg-green-600", "hover:bg-blue-600");
+        botao.classList.add("bg-red-500", "hover:bg-red-600");
+        botao.innerText = nome;
+
+        localStorage.setItem("periciaAgendada", "true"); // Marca que a perícia foi agendada
+        alert("Perícia agendada com sucesso!");
+      }
+    }
+
+    // Função para permitir que o administrador defina as datas
+    function definirDatasAdmin() {
+      if (usuarioLogado !== "solange") return;
+      const novaData = prompt("Digite a data (formato: dd/mm):");
+      if (novaData) {
+        document.querySelectorAll(".data-vaga").forEach(el => el.innerText = novaData);
+      }
+    }
+
+    // Função para gerar as vagas no turno, recebendo o turno, hora, classe de cor e rótulo do turno
+    function gerarVagas(turnoIndex, hora, corClasse, turnoLabel) {
+      let html = '';
+
+      for (let i = 1; i <= 23; i++) {
+        const vagaId = `${turnoLabel}-${i}`;
+
+        html += `
+          <button id="btn-${vagaId}"
+            class="${corClasse} text-white py-1 rounded hover:opacity-90"
+            onclick="agendarPericia(getNomeRequerente(), document.querySelectorAll('.data-vaga')[${turnoIndex}].innerText, '${hora}', '${turnoLabel}', ${i})">
+            Vaga ${i}
+          </button>
+        `;
+      }
+      return html;
+    }
+
+    // Função para verificar se a perícia foi agendada
+    function verificarAgendamento() {
+      const periciaAgendada = localStorage.getItem("periciaAgendada");
+      return periciaAgendada === "true";
+    }
+
+    // Função para pegar o nome do requerente
+    function getNomeRequerente() {
+      // Recupera o nome salvo no localStorage
+      const nome = localStorage.getItem('nomeAgendamento');
+      
+      // Se o nome estiver vazio ou não estiver no localStorage, retorna "Desconhecido"
+      return nome ? nome : "Desconhecido";
+    }
+
+    // Função para salvar o nome do requerente no localStorage
+    function salvarNome() {
+      const nomeRequerente = document.getElementById('nome').value; // Pega o nome do requerente
+      if (nomeRequerente.trim() !== '') {
+        localStorage.setItem('nomeAgendamento', nomeRequerente); // Salva o nome no localStorage
+        window.location.href = 'pericia-deficiencia-mental-auditiva-visual.html'; // Redireciona para a página de agendamento
+      } else {
+        alert('Por favor, preencha o nome do requerente.');
+      }
+    }
+
+    // Preencher o campo de nome do requerente, caso o nome esteja salvo no localStorage
+    window.onload = function() {
+      const nomeSalvo = localStorage.getItem('nomeAgendamento');
+      if (nomeSalvo) {
+        document.getElementById('nomeRequerente').value = nomeSalvo;
+      }
+    };
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-2xl font-bold text-center mb-6">Agendamento - Mental, Auditivo e Visual</h1>
+
+    <!-- Botão de definição de datas -->
+    <div class="mb-4 text-center">
+      <button 
+        onclick="definirDatasAdmin()"
+        class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded"
+      >
+        Definir datas (somente Solange)
+      </button>
+    </div>
+
+    <!-- Botão de voltar para o formulário de agendamento -->
+    <div class="mb-4 text-center">
+      <button 
+        onclick="verificarAgendamento() ? window.history.go(-2) : alert('Você precisa agendar a perícia antes de voltar ao formulário.')"
+        class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded"
+      >
+        Voltar para o Formulário
+      </button>
+    </div>
+      
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Turno 09:00 -->
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-lg font-semibold mb-2">Turno da Manhã - 09:00</h2>
+        <p>Data: <span class="data-vaga">__/__</span></p>
+        <div class="grid grid-cols-4 gap-2 mt-4" id="vagas-manha"></div>
+      </div>
+
+      <!-- Turno 12:00 -->
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-lg font-semibold mb-2">Turno da Tarde - 12:00</h2>
+        <p>Data: <span class="data-vaga">__/__</span></p>
+        <div class="grid grid-cols-4 gap-2 mt-4" id="vagas-tarde"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Gerar as vagas nos dois turnos
+    document.getElementById("vagas-manha").innerHTML = gerarVagas(0, "09:00", "bg-green-500 hover:bg-green-600", "manha");
+    document.getElementById("vagas-tarde").innerHTML = gerarVagas(1, "12:00", "bg-blue-500 hover:bg-blue-600", "tarde");
+  </script>
+</body>
+</html>

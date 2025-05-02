@@ -242,15 +242,12 @@
         </div>
       </div>
 
-      <div class="input-container">
-        <label for="dataAgendamento">Data do Agendamento:</label>
-        <input type="date" id="dataAgendamento" required />
+      <div class="mb-4">
+        <button onclick="salvarNome()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded">
+          Agendar Perícia
+        </button>
       </div>
 
-      <div class="input-container">
-        <label for="horario">Horário:</label>
-        <input type="text" id="horario" required />
-      </div>
 
       <div class="input-container" style="grid-column: span 2;">
         <label>Tipo de Deficiência:</label>
@@ -262,6 +259,17 @@
           <label><input type="radio" name="deficiencia" value="fisico" /> Físico</label>
         </div>
       </div>
+
+      <div class="input-container">
+        <label for="dataAgendada">Data Agendada:</label>
+        <input type="date" id="dataAgendada" required disabled />
+      </div>
+      
+      <div class="input-container">
+        <label for="horaAgendada">Hora Agendada:</label>
+        <input type="time" id="horaAgendada" required disabled />
+      </div>
+
 
       <div class="input-container" style="grid-column: span 2;">
         <button type="button" id="gerarPdf">PASSE LIVRE</button>
@@ -290,24 +298,41 @@
     "THAIS": "@Smtt1234",
     "EDUARDO":"1981"
   };
+  // Verifica se o atendente já foi salvo no localStorage
+window.onload = function () {
+  const usuarioSalvo = localStorage.getItem("atendente");
+  if (usuarioSalvo) {
+    // Simula login automático
+    document.getElementById("loginSection").style.display = "none";
+    document.getElementById("formularioSection").style.display = "block";
+    document.getElementById("nomeAtendenteSpan").textContent = usuarioSalvo;
+    document.getElementById("atendenteManual").value = usuarioSalvo;
+    window.nomeAtendente = usuarioSalvo;
+  }
+};
 
-  document.getElementById("loginForm").addEventListener("submit", function (e) {
-    e.preventDefault();
 
-    const atendenteInput = document.getElementById("atendenteLogin").value.trim().toUpperCase();
-    const senha = document.getElementById("senha").value;
+document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    if (usuarios[atendenteInput] && usuarios[atendenteInput] === senha) {
-      document.getElementById("loginSection").style.display = "none";
-      document.getElementById("formularioSection").style.display = "block";
-      document.getElementById("nomeAtendenteSpan").textContent = atendenteInput;
-      document.getElementById("atendenteManual").value = atendenteInput;
-      window.nomeAtendente = atendenteInput;
-      document.getElementById("mensagemErro").textContent = ""; // limpa mensagem
-    } else {
-      document.getElementById("mensagemErro").textContent = "Login inválido. Tente novamente.";
-    }
-  });
+  const atendenteInput = document.getElementById("atendenteLogin").value.trim().toUpperCase();
+  const senha = document.getElementById("senha").value;
+
+  if (usuarios[atendenteInput] && usuarios[atendenteInput] === senha) {
+    // Salva o atendente no localStorage para login automático
+    localStorage.setItem("atendente", atendenteInput);
+
+    document.getElementById("loginSection").style.display = "none";
+    document.getElementById("formularioSection").style.display = "block";
+    document.getElementById("nomeAtendenteSpan").textContent = atendenteInput;
+    document.getElementById("atendenteManual").value = atendenteInput;
+    window.nomeAtendente = atendenteInput;
+    document.getElementById("mensagemErro").textContent = ""; // Limpa mensagem de erro
+  } else {
+    document.getElementById("mensagemErro").textContent = "Login inválido. Tente novamente.";
+  }
+});
+
 
   // ENTER → próximo campo
   document.querySelectorAll('input').forEach((input, index, allInputs) => {
@@ -319,6 +344,7 @@
       }
     });
   });
+
 </script>
 
 
@@ -341,6 +367,35 @@
       rodape.style.display = 'none';
     }
   });
+</script>
+<script>
+  function salvarNome() {
+      const nomeRequerente = document.getElementById('nome').value;
+      const radios = document.getElementsByName('deficiencia');
+      let tipoDeficiencia = '';
+
+      // Verifica qual rádio foi selecionado
+      for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+          tipoDeficiencia = radios[i].value;
+          break;
+        }
+      }
+
+      // Verifica se todos os campos foram preenchidos
+      if (nomeRequerente.trim() !== '' && tipoDeficiencia !== '') {
+        // Salva os dados no localStorage
+        localStorage.setItem('nomeAgendamento', nomeRequerente);
+        localStorage.setItem('tipoDeficiencia', tipoDeficiencia);
+        console.log("Nome Agendamento: " + localStorage.getItem('nome'));
+        console.log("Tipo Deficiência: " + localStorage.getItem('tipoDeficiencia'));
+        
+        // Redireciona para a página de agendamento de perícia
+        window.location.href = 'agendar-pericia.html';
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    }
 </script>
 
 </body>

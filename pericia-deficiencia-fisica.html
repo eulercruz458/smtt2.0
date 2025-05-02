@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Perícia - Deficiência Física</title>
+  <script>
+    const usuarioLogado = "usuario"; // mude para "solange" para acesso administrativo
+    const vagasPreenchidas = {}; // Armazena vagas ocupadas
+
+    function agendarPericia(nome, data, hora, turno, index) {
+      const vagaId = `${turno}-${index}`;
+
+      if (vagasPreenchidas[vagaId]) {
+        alert(`Esta vaga já foi preenchida por ${vagasPreenchidas[vagaId].nome}.`);
+        return;
+      }
+
+      const confirmacao = confirm(`Deseja agendar a perícia de ${nome} para o dia ${data} às ${hora}?`);
+      if (confirmacao) {
+        vagasPreenchidas[vagaId] = { nome, data, hora };
+
+        const botao = document.getElementById(`btn-${vagaId}`);
+        botao.classList.remove("bg-green-500", "hover:bg-green-600");
+        botao.classList.add("bg-red-500", "hover:bg-red-600");
+        botao.innerText = nome;
+
+        alert("Perícia agendada com sucesso!");
+        // Na página de agendamento, ao confirmar:
+        localStorage.setItem("dataPericia", dataSelecionada); // ex: "2025-05-10"
+        localStorage.setItem("horaPericia", horaSelecionada); // ex: "14:30"
+
+
+        // Salva o agendamento no localStorage
+        localStorage.setItem("periciaAgendada", "true");
+      }
+    }
+
+    function definirDatasAdmin() {
+      if (usuarioLogado !== "solange") return;
+      const novaData = prompt("Digite a data (formato: dd/mm):");
+      if (novaData) {
+        document.querySelectorAll(".data-vaga").forEach(el => el.innerText = novaData);
+      }
+    }
+
+    function gerarVagas(turnoIndex, hora, corClasse, turnoLabel) {
+      let html = '';
+      for (let i = 1; i <= 23; i++) {
+        const vagaId = `${turnoLabel}-${i}`;
+        html += `  
+          <button id="btn-${vagaId}"
+            class="${corClasse} text-white py-1 rounded hover:opacity-90"
+            onclick="coletarNomeEAgendar(document.querySelectorAll('.data-vaga')[${turnoIndex}].innerText, '${hora}', '${turnoLabel}', ${i})"
+          >
+            Vaga ${i}
+          </button>
+        `;
+      }
+      return html;
+    }
+
+    function coletarNomeEAgendar(data, hora, turno, index) {
+      const nome = getNomeRequerente();
+
+      if (!nome) {
+        alert("Nome não encontrado no localStorage. Por favor, registre seu nome.");
+        return;
+      }
+
+      agendarPericia(nome, data, hora, turno, index);
+    }
+
+    // Função para recuperar o nome salvo no localStorage
+    function getNomeRequerente() {
+      return localStorage.getItem('nomeAgendamento') || null;
+    }
+
+    // Função para verificar se a perícia foi agendada antes de permitir voltar
+    function verificarAgendamento() {
+      const periciaAgendada = localStorage.getItem("periciaAgendada");
+      if (!periciaAgendada) {
+        alert("Você precisa agendar a perícia antes de voltar ao formulário.");
+        return false; // Não permite voltar
+      }
+      return true; // Permite voltar
+    }
+  </script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen p-6">
+
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-2xl font-bold text-center mb-4">Agendamento - Deficiência Física</h1>
+
+    <!-- Botão de definição de datas -->
+    <div class="mb-4 text-center">
+      <button 
+        onclick="definirDatasAdmin()"
+        class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded"
+      >
+        Definir datas (somente Solange)
+      </button>
+    </div>
+
+    <!-- Botão de Voltar -->
+    <div class="mb-4 text-center">
+      <button 
+        onclick="if (verificarAgendamento()) { window.history.go(-2); }"
+        class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded"
+      >
+        Voltar para o Formulário
+      </button>
+    </div>
+
+    <!-- Vagas -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Turno 07:00 -->
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-lg font-semibold mb-2">Turno da Manhã - 07:00</h2>
+        <p>Data: <span class="data-vaga">__/__</span></p>
+        <div class="grid grid-cols-4 gap-2 mt-4" id="vagas-manha"></div>
+      </div>
+
+      <!-- Turno 13:00 -->
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-lg font-semibold mb-2">Turno da Tarde - 13:00</h2>
+        <p>Data: <span class="data-vaga">__/__</span></p>
+        <div class="grid grid-cols-4 gap-2 mt-4" id="vagas-tarde"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Gerando as vagas ao carregar a página
+    document.getElementById("vagas-manha").innerHTML = gerarVagas(0, "07:00", "bg-green-500 hover:bg-green-600", "manha");
+    document.getElementById("vagas-tarde").innerHTML = gerarVagas(1, "13:00", "bg-green-500 hover:bg-green-600", "tarde");
+  </script>
+</body>
+</html>
