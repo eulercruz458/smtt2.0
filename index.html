@@ -262,12 +262,12 @@
 
       <div class="input-container">
         <label for="dataAgendada">Data Agendada:</label>
-        <input type="date" id="dataAgendada" required disabled />
+        <input type="text" id="dataAgendada" required disabled />
       </div>
       
       <div class="input-container">
         <label for="horaAgendada">Hora Agendada:</label>
-        <input type="time" id="horaAgendada" required disabled />
+        <input type="text" id="horaAgendada" required disabled />
       </div>
 
 
@@ -298,8 +298,9 @@
     "THAIS": "@Smtt1234",
     "EDUARDO":"1981"
   };
-  // Verifica se o atendente já foi salvo no localStorage
+ 
 window.onload = function () {
+  // Verifica se o atendente está salvo
   const usuarioSalvo = localStorage.getItem("atendente");
   if (usuarioSalvo) {
     // Simula login automático
@@ -309,7 +310,25 @@ window.onload = function () {
     document.getElementById("atendenteManual").value = usuarioSalvo;
     window.nomeAtendente = usuarioSalvo;
   }
+
+  // Preenche as informações de data e hora agendada
+  const dataAgendada = localStorage.getItem('dataPericia');
+  const horaAgendada = localStorage.getItem('horaPericia');
+
+  if (dataAgendada && horaAgendada) {
+    // Preencher os campos com a data e hora agendadas
+    document.querySelectorAll(".data-vaga").forEach(el => {
+      el.innerText = `${dataAgendada} às ${horaAgendada}`;
+    });
+
+    // Caso haja a necessidade de desabilitar botões, exemplo:
+    document.querySelectorAll("button").forEach(button => {
+      button.disabled = true;
+      button.classList.add("opacity-50");
+    });
+  }
 };
+
 
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
