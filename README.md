@@ -1,2 +1,2 @@
 # Projeto-SMTT
-https://formularioagendamento.netlify.app/
+https://formularioagendamento.vercel.app/
