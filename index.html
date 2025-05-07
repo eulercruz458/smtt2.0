@@ -30,6 +30,14 @@
   <section id="formularioSection">
     <div id="campoAtendente">Atendente: <span id="nomeAtendenteSpan"></span></div>
 
+    <div id="header" style="position: fixed; top: 10px; right: 10px; text-align: right;">
+      <span>Atendente: <span id="nomeAtendenteSpan"></span></span><br>
+      <button id="btnSair" style="margin-top: 5px; background-color: red; color: white; border: none; padding: 6px 12px; border-radius: 5px; cursor: pointer;">
+        Sair
+      </button>
+    </div>    
+    
+
     <h1>Formulário de Agendamento</h1>
 
     <form id="agendamentoForm">
@@ -40,7 +48,7 @@
 
       <div class="input-container">
         <label for="nome">Nome Completo:</label>
-        <input type="text" id="nome" required />
+        <input type="text" id="nome" placeholder="Digite o nome completo do solicitante"  required />
       </div>
 
       <div class="input-container">
@@ -50,12 +58,12 @@
 
       <div class="input-container">
         <label for="rg">RG:</label>
-        <input type="text" id="rg" required />
+        <input type="text" id="rg" placeholder="Digite o número do RG"  required />
       </div>
 
       <div class="input-container">
         <label for="ssp">SSP:</label>
-        <input type="text" id="ssp" required />
+        <input type="text" id="ssp" placeholder="Digite a SSP do RG" required />
       </div>
 
       <div class="input-container">
@@ -65,22 +73,22 @@
 
       <div class="input-container">
         <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" required />
+        <input type="text" id="cpf" placeholder="Digite o CPF"  required />
       </div>
 
       <div class="input-container">
         <label for="nomeMae">Nome da Mãe:</label>
-        <input type="text" id="nomeMae" required />
+        <input type="text" id="nomeMae" placeholder="Digite o nome da mãe do solicitante" required />
       </div>
 
       <div class="input-container">
         <label for="endereco">Endereço:</label>
-        <input type="text" id="endereco" required />
+        <input type="text" id="endereco" placeholder="Digite o endereco"  required />
       </div>
 
       <div class="input-container">
         <label for="numCasa">N°:</label>
-        <input type="text" id="numCasa" required />
+        <input type="text" id="numCasa" placeholder="Digite o N° da casa"  required />
       </div>
 
      <div class="input-container">
@@ -96,12 +104,12 @@
 
       <div class="input-container">
         <label for="telefone1">Telefone (1):</label>
-        <input type="text" id="telefone1" required />
+        <input type="text" id="telefone1" placeholder="Digite o número de telefone"  required />
       </div>
 
       <div class="input-container">
         <label for="telefone2">Telefone (2):</label>
-        <input type="text" id="telefone2" required />
+        <input type="text" id="telefone2" placeholder="Digite outro número de telefone (opcional)"  required />
       </div>
 
   
@@ -113,7 +121,7 @@
         </div>
       </div>
       
-      <div class="input-container" style="grid-column: span 2;">
+      <div class="input-container" style="grid-column: span 1;">
         <label>Tipo de Deficiência:</label>
         <div>
           <label><input type="radio" name="deficiencia" value="TEA" required /> TEA</label>
@@ -136,7 +144,7 @@
 
       <div class="input-container">
         <label for="horario">Horário:</label>
-        <input type="text" id="horario" required />
+        <input type="text" id="horario" placeholder="Digite o Horário agendado da perícia"  required />
       </div>
 
 
@@ -206,16 +214,26 @@
 
 <!-- Script para mostrar o rodapé no final -->
 <script>
-  window.addEventListener("DOMContentLoaded", () => {
-  const atendenteLogado = localStorage.getItem("atendenteLogado");
-  if (atendenteLogado) {
-    document.getElementById("loginSection").style.display = "none";
-    document.getElementById("formularioSection").style.display = "block";
-    document.getElementById("nomeAtendenteSpan").textContent = atendenteLogado;
-    document.getElementById("atendenteManual").value = atendenteLogado;
-    window.nomeAtendente = atendenteLogado;
-  }
-});
+   window.addEventListener("DOMContentLoaded", () => {
+    const atendenteLogado = localStorage.getItem("atendenteLogado");
+
+    if (atendenteLogado) {
+      document.getElementById("loginSection").style.display = "none";
+      document.getElementById("formularioSection").style.display = "block";
+      document.getElementById("nomeAtendenteSpan").textContent = atendenteLogado;
+      document.getElementById("atendenteManual").value = atendenteLogado;
+      window.nomeAtendente = atendenteLogado;
+    }
+
+    const btnSair = document.getElementById("btnSair");
+    if (btnSair) {
+      btnSair.addEventListener("click", () => {
+        localStorage.removeItem("atendenteLogado");
+        document.getElementById("formularioSection").style.display = "none";
+        document.getElementById("loginSection").style.display = "block";
+      });
+    }
+  });
 
   const rodape = document.querySelector('.rodape');
 

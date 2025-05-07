@@ -8,18 +8,19 @@
   box-sizing: border-box;
 }
 
+/* Corpo */
 body {
   font-family: 'Roboto', Arial, sans-serif;
   background-color: #f0f0f0;
   background-image: url('https://i.postimg.cc/HsKccD5w/Design-sem-nome.jpg');
   background-repeat: no-repeat;
-  background-size: 100% auto; /* Largura 100%, altura proporcional */
-  background-position: top center;
+  background-size: 100% auto;
+  background-position: center;
   background-attachment: fixed;
-  padding: 20px;
+  padding: 30px;
   color: #333;
+  padding-bottom: 60px; /* espaço para o rodapé */
 }
-
 
 /* Título principal */
 h1 {
@@ -35,12 +36,12 @@ form {
   background: #ffffff;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  max-width: 900px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5px;
+  gap: 10px;
   align-items: center;
 }
 
@@ -52,10 +53,14 @@ form {
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   float: right;
-  margin-top: -170px;
+  margin-top: 20px;
 }
 
-/* Labels dos campos */
+.div-branca button {
+  margin-right: 10px;
+}
+
+/* Labels */
 label {
   font-weight: 500;
   font-size: 1.1rem;
@@ -64,25 +69,25 @@ label {
   grid-column: span 2;
 }
 
+/* Inputs */
 input[type="text"],
 input[type="date"] {
   width: 100%;
-  padding: 12px;
-  border: 2px solid #ccc; /* Linha mais grossa */
-  border-radius: 8px;
-  background-color: #f9f9f9; /* Fundo mais bonito */
-  box-sizing: border-box;
-  font-size: 1rem;
+  padding: 20px;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 1.2rem;
   color: #333;
   transition: all 0.3s ease;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Efeito de profundidade */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 input[type="text"]:focus,
 input[type="date"]:focus {
   border-color: #007bff;
   background-color: #fff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Destaque elegante */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
   outline: none;
 }
 
@@ -98,7 +103,7 @@ button {
   font-size: 1.2rem;
   transition: background-color 0.3s ease;
   grid-column: span 2;
-  margin-top: 5px;
+  margin-top: 3.5px;
 }
 
 button:hover {
@@ -109,13 +114,9 @@ button:focus {
   outline: none;
 }
 
-/* Botões de trocar cores */
+/* Botões de tema */
 #trocarRoxoCinza {
   background-color: #8b8b8b;
-  border-radius: 6px;
-  font-size: 1.2rem;
-  grid-column: span 2;
-  margin-top: 5px;
 }
 
 #trocarRoxoCinza:hover {
@@ -124,10 +125,6 @@ button:focus {
 
 #trocarCinzaRoxo {
   background-color: #8400ff;
-  border-radius: 6px;
-  font-size: 1.2rem;
-  grid-column: span 2;
-  margin-top: 5px;
 }
 
 #trocarCinzaRoxo:hover {
@@ -137,23 +134,127 @@ button:focus {
 /* Botão PDF Estacionamento */
 .botaoEstacionamento {
   background-color: #007bff;
-  border-radius: 6px;
-  font-size: 1.2rem;
-  grid-column: span 2;
-  margin-top: 5px;
 }
 
 .botaoEstacionamento:hover {
   background-color: #0056b3;
 }
 
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  padding-bottom: 60px; /* espaço para o rodapé */
+/* Campo Atendente Fixo */
+#campoAtendenteFixo {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+  z-index: 1000;
 }
 
+#campoAtendenteFixo label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+#campoAtendenteFixo span {
+  font-weight: normal;
+}
+
+/* Rodapé */
+.rodape {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+/* Tela de login */
+.container {
+  display: center;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+  max-width: 380px;
+  margin: auto;
+}
+
+/* Formulário de login */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #bbb;
+  background: #fff;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.input-group input {
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+}
+
+.login-form button {
+  margin-top: 10px;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Mensagem de erro */
+.erro {
+  color: #d8000c;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* Campo Atendente */
 #campoAtendente {
   position: absolute;
   top: 10px;
@@ -165,36 +266,7 @@ body {
   font-weight: bold;
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #e9e9e9;
-}
-
-.login-form {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px #bbb;
-}
-
-.input-group {
-  margin-bottom: 8px;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 5px;
-  box-sizing: border-box;
-}
-
-.erro {
-  color: red;
-  margin-top: 10px;
-}
-
+/* Formulário expandido */
 #formularioSection {
   display: none;
   padding: 30px;
@@ -238,27 +310,20 @@ body {
 }
 
 .input-container select {
-padding: 10px;
-font-size: 16px;
-border: 2px solid #ccc;
-border-radius: 8px;
-background-color: #fff;
-outline: none;
-transition: border-color 0.3s ease;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.3s ease;
 }
 
 .input-container select:focus {
-border-color: #007BFF;
+  border-color: #007BFF;
 }
 
-.div-branca {
-  margin-top: 20px;
-}
-
-.div-branca button {
-  margin-right: 10px;
-}
-
+/* Formulário agendamento */
 #agendamentoForm {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -275,7 +340,7 @@ border-color: #007BFF;
   }
 }
 
-/* Botão de limpar campos */
+/* Botão limpar */
 #limparCampos {
   background-color: #dc3545;
   color: white;
@@ -295,119 +360,3 @@ border-color: #007BFF;
 #limparCampos:active {
   transform: scale(0.98);
 }
-
-/* Container principal da tela de login */
-.container {
-  background-color: white;
-  padding: 40px 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 420px;
-  margin: 40px auto; /* Centraliza com margem */
-}
-
-/* Formulário de login */
-.login-form {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Título do login */
-.login-form h2 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 1.8rem;
-  color: #333;
-}
-
-/* Grupo de inputs */
-.input-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.input-group label {
-  font-size: 1rem;
-  margin-bottom: 6px;
-  color: #444;
-}
-
-.input-group input {
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  outline: none;
-  transition: border-color 0.3s;
-}
-
-.input-group input:focus {
-  border-color: #007bff;
-}
-
-/* Botão de login */
-.login-form button {
-  margin-top: 10px;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  background-color: #007bff;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.login-form button:hover {
-  background-color: #0056b3;
-}
-
-/* Mensagem de erro */
-.erro {
-  color: #d8000c;
-  font-size: 0.95rem;
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-/* Campo do atendente fixo no topo */
-#campoAtendenteFixo {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 8px 12px;
-  border-radius: 6px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  font-family: sans-serif;
-  z-index: 1000;
-}
-
-#campoAtendenteFixo label {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-#campoAtendenteFixo span {
-  font-weight: normal;
-}
-
-.rodape {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: white; /* ou transparent se quiser um efeito flutuante */
-  border-top: 1px solid #ccc;
-  text-align: center;
-  padding: 10px;
-  font-size: 14px;
-  color: #333;
-  z-index: 1000;
-  display: none; /* começa oculto */
-}
-
-
-
