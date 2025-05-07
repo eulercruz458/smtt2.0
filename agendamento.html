@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Agendamento</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f8fb;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    .botao {
+      display: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      margin: 15px;
+      background-color: #039BE5;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .botao:hover {
+      background-color: #0288d1;
+    }
+  </style>
+
+  <script>
+    function calcularIdade(dataNascimento) {
+      const hoje = new Date();
+      const nascimento = new Date(dataNascimento);
+      let idade = hoje.getFullYear() - nascimento.getFullYear();
+      const m = hoje.getMonth() - nascimento.getMonth();
+      if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) idade--;
+      return idade;
+    }
+
+    function redirecionar(url) {
+      window.location.href = url;
+    }
+
+    function mostrarBotao(id) {
+      document.getElementById(id).style.display = "inline-block";
+    }
+
+    function processar() {
+      const params = new URLSearchParams(window.location.search);
+      const data = params.get("data");
+      const def = params.get("def");
+
+      if (!data || !def) {
+        alert("Dados ausentes.");
+        return;
+      }
+
+      const idade = calcularIdade(data);
+
+      if (def === "fisico") {
+        // Mostra botões para escolher manhã ou tarde com Dr. Rivaldo
+        document.getElementById("titulo").style.display = "block";
+        mostrarBotao("rivaldoManha");
+        mostrarBotao("rivaldoTarde");
+      } else {
+        // Redirecionamento automático para Dr. Luiz (criança ou adulto)
+        if (idade < 18) {
+          redirecionar("https://calendar.google.com/calendar/appointments/schedules/AcZssZ29wIIRFmR8pP0c5mv16yafEWojTGdZUF0Hg3vR85BU0XtZ5O7EZwiQsF1qRWjVOvkfCOBKiklP?gv=true");
+        } else {
+          redirecionar("https://calendar.google.com/calendar/appointments/schedules/AcZssZ2LkJ2xvw6su-nvnzW1tuIzqGRBcA0CHGLkZNSOYwcg9QXewyQ4ggUzmL7JbJIsjglhOQ15Uhte?gv=true");
+        }
+      }
+    }
+  </script>
+</head>
+
+<body onload="processar()">
+  <h2 id="titulo" style="display: none;">Escolha um horário com o Dr. Rivaldo:</h2>
+
+  <button id="rivaldoManha" class="botao" onclick="window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ1CEApMfvlw2n-nwefJEPvuIFD7BCEkPahAXnllz2mdT7yYcVy8VfmgaNUZH9G3YEqvaz40LLMK?gv=true')">
+    Dr. Rivaldo (Manhã)
+  </button>
+
+  <button id="rivaldoTarde" class="botao" onclick="window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ0XXD-WW53CFjqoIf4YLJgKAMPbcHMuQYDYIwe4W43qrdYm10NXTnJtIQhIAbF4GqUz3IGZJmiM?gv=true')">
+    Dr. Rivaldo (Tarde)
+  </button>
+</body>
+</html>
