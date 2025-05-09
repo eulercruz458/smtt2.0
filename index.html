@@ -104,12 +104,12 @@
 
       <div class="input-container">
         <label for="telefone1">Telefone (1):</label>
-        <input type="text" id="telefone1" placeholder="Digite o número de telefone"  required />
+        <input  type="text" id="telefone1" onblur="this.value = formatarTelefone(this.value)"  placeholder="Digite o número de telefone"  required />
       </div>
 
       <div class="input-container">
         <label for="telefone2">Telefone (2):</label>
-        <input type="text" id="telefone2" placeholder="Digite outro número de telefone (opcional)"  required />
+        <input  type="text" id="telefone2" onblur="this.value = formatarTelefone(this.value)"  placeholder="Digite outro número de telefone (opcional)"  required />
       </div>
 
   

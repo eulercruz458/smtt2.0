@@ -88,15 +88,15 @@ const bairrosPorCidade = {
     "OLARIA", "CENTENÁRIO", "JAPÃOZINHO", "CIDADE NOVA", "INDUSTRIAL",
     "PALESTINA", "AEROPORTO", "SANTOS DUMONT", "SANTO ANTÔNIO",
     "JOSÉ CONRADO DE ARAÚJO", "18 DO FORTE", "GETÚLIO VARGAS", "CAPUCHO",
-    "SIQUEIRA CAMPOS", "CIRURGIA", "CENTRO", "NOVO PARAÍSO", "SUÍSSA",
+    "SIQUEIRA CAMPOS", "CIRURGIA", "CENTRO A", "NOVO PARAÍSO", "SUÍSSA",
     "SÃO JOSÉ", "PEREIRA LOBO", "AMÉRICA", "13 DE JULHO", "SALGADO FILHO",
     "PONTO NOVO", "GRAGERU", "JABOTIANA", "JARDINS", "INÁCIO BARBOSA",
     "COROA DO MEIO", "SÃO CONRADO", "FAROLÂNDIA", "ATALAIA", "17 DE MARÇO",
     "ARUANA", "SANTA MARIA", "ROBALO", "SÃO JOSÉ DOS NÁUFRAGOS", "AREIA BRANCA",
-    "MATAPUÃ", "GAMELEIRA", "MOSQUEIRO", "LUZIA"
+    "MATAPUÃ", "GAMELEIRA", "MOSQUEIRO", "LUZIA","MARIVAN"
   ],
   "SOCORRO": [
-    "ALBANO FRANCO", "BOA VIAGEM", "CASTELO", "CENTRO HISTÓRICO", "FERNANDO COLLOR",
+    "ALBANO FRANCO", "BOA VIAGEM", "CASTELO", "CENTRO S", "FERNANDO COLLOR",
     "GUAJARÁ", "ITACANEMA", "JARDIM", "JOÃO ALVES", "MANGABEIRA",
     "MARCOS FREIRE I", "MARCOS FREIRE II", "MARCOS FREIRE III", "NOVO HORIZONTE",
     "PAI ANDRÉ", "PALESTINA DE DENTRO", "PALESTINA DE FORA", "PARQUE DOS FARÓIS",
@@ -106,7 +106,7 @@ const bairrosPorCidade = {
     "NOSSA SENHORA DO SOCORRO", "OITEIRO", "PALESTINA", "QUISSAMÃ"
   ],
   "BARRA DOS COQUEIROS": [
-    "CENTRO", "ATALAIA NOVA", "ANTÔNIO PEDRO", "ESPAÇO TROPICAL", "MARIVAN",
+    "CENTRO", "ATALAIA NOVA", "ANTÔNIO PEDRO", "ESPAÇO TROPICAL",
     "MOISÉS GOMES", "OLIMAR", "PRAIA COSTA CANAL", "TOURO", "JATOBÁ", "CAPUÃ",
     "OLHOS D'ÁGUA", "PRISCO VIANA", "RECANTO ANDORINHAS", "SERIGY", "BEIRA RIO",
     "HILDETE FALCÃO BATISTA", "COSTA PARADISO", "BRISAS DA ATALAIA",
@@ -117,11 +117,11 @@ const bairrosPorCidade = {
     "ALDEIA", "ALTO DA COLINA", "ALTO DA DIVINEIA", "ALTO DE ITABAIANA",
     "ALTO SANTO ANTÔNIO", "ANINGAS", "ARAME I", "ARAME II",
     "ASSENTAMENTO NOVA CANAÃ", "BARREIRO", "CAÍPE VELHO", "CAJUEIRO", "CARDOSO",
-    "CABRITA", "CAMBOATÁ", "CAMBOATÁ 2", "CENTRO", "COLÔNIA MIRANDA", "ROSA ELZE",
+    "CABRITA", "CAMBOATÁ", "CAMBOATÁ 2", "CENTRO HISTÓRICO", "COLÔNIA MIRANDA", "ROSA ELZE",
     "CRISTO REDENTOR", "ESTIVA", "FEIJÃO", "JOSÉ BATALHA DE GÓIS", "LAURO ROCHA",
     "MADALENA DE GÓIS", "MARCELO DÉDA", "MOSQUEIRO", "PARQUE SANTA RITA",
     "PEDREIRAS", "PINTOS", "QUISSAMÃ", "RECANTO DOS PASSARINHOS", "RITA CACETE",
-    "TERRA DURA", "TINHARÉ", "UMBAUBÁ", "VALE DO AMANHECER", "VÁRZEA GRANDE"
+    "TERRA DURA", "TINHARÉ", "UMBAUBÁ", "VALE DO AMANHECER", "VÁRZEA GRANDE", "EDUARDO GOMES"
   ]
 };
 
@@ -187,8 +187,33 @@ function obterMesPorExtenso(mes) {
 }
 function formatarTelefone(telefone) {
     const telLimpo = telefone.replace(/\D/g, '');
-    return telLimpo.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
-}
+  
+    // Se o campo estiver vazio, apenas retorna vazio sem alertar
+    if (telLimpo === "") {
+      return "";
+    }
+  
+    // Verifica se tem pelo menos DDD (2 dígitos) + número (8 ou 9 dígitos)
+    if (!/^\d{10,11}$/.test(telLimpo)) {
+      alert("Número inválido ou sem DDD. Esperado: (99) 99999-9999 ou (99) 9999-9999.");
+      return "";
+    }
+  
+    // Formata números com 11 dígitos (celular)
+    if (telLimpo.length === 11) {
+      return telLimpo.replace(/^(\d{2})(\d{1})(\d{4})(\d{4})$/, '($1) $2 $3-$4');
+    }
+  
+    // Formata números com 10 dígitos (fixo)
+    if (telLimpo.length === 10) {
+      return telLimpo.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3');
+    }
+  
+    // Se cair aqui, o número é inválido (mas essa parte provavelmente nunca será alcançada)
+    alert("Número de telefone inválido.");
+    return "";
+  }  
+  
 
 function formatarCPF(cpf) {
     if (!cpf || typeof cpf !== 'string' && typeof cpf !== 'number') return '';
